@@ -1,0 +1,8 @@
+1) Para compilar digite:
+	$ make
+
+2) O make vai gerar o executavel miniPascalCompiler
+
+3) Executar:
+	$ ./miniPascalCompiler <arquivo-fonte.pas> <arquivo-de-saida.mepa>
+
