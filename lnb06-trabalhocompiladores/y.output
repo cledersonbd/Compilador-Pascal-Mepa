@@ -1,0 +1,2587 @@
+Terminais não utilizados na gramática
+
+   ABRECH
+   FECHACH
+
+
+Gramática
+
+    0 $accept: programa $end
+
+    1 $@1: /* vazio */
+
+    2 programa: PROGRAM identificador $@1 ABREPAR listaidentificadores FECHAPAR PTOVIRG bloco PONTO
+
+    3 listaidentificadores: identificador
+    4                     | listaidentificadores VIRGULA identificador
+
+    5 $@2: /* vazio */
+
+    6 $@3: /* vazio */
+
+    7 bloco: p_declaracaorotulos $@2 p_declaracaovariaveis $@3 p_declaracaosubrotinas comandocomposto
+
+    8 p_declaracaorotulos: /* vazio */
+    9                    | LABEL listanumeros PTOVIRG
+
+   10 listanumeros: numero
+   11             | listanumeros VIRGULA numero
+
+   12 p_declaracaovariaveis: /* vazio */
+   13                      | VAR declaracaovariaveis PTOVIRG
+   14                      | declaracaovariaveis PTOVIRG
+
+   15 declaracaovariaveis: listaidentificadores DOISPTS tipo
+   16                    | declaracaovariaveis PTOVIRG listaidentificadores DOISPTS tipo
+
+   17 tipo: INTEGER
+
+   18 p_declaracaosubrotinas: /* vazio */
+   19                       | listadeclaracaosubrotinas PTOVIRG
+
+   20 listadeclaracaosubrotinas: listadeclaracaosubrotinas PTOVIRG declaracaosubrotinas
+   21                          | declaracaosubrotinas
+
+   22 declaracaosubrotinas: declaracaoproc
+   23                     | declaracaofuncao
+
+   24 $@4: /* vazio */
+
+   25 $@5: /* vazio */
+
+   26 declaracaoproc: PROCEDURE $@4 identificador $@5 parametrosformais PTOVIRG bloco
+
+   27 $@6: /* vazio */
+
+   28 $@7: /* vazio */
+
+   29 $@8: /* vazio */
+
+   30 declaracaofuncao: FUNCTION $@6 identificador $@7 parametrosformais DOISPTS tipo $@8 PTOVIRG bloco
+
+   31 parametrosformais: /* vazio */
+
+   32 $@9: /* vazio */
+
+   33 $@10: /* vazio */
+
+   34 parametrosformais: ABREPAR $@9 s_parametrosformais $@10 FECHAPAR
+
+   35 $@11: /* vazio */
+
+   36 $@12: /* vazio */
+
+   37 s_parametrosformais: VAR $@11 listaidentificadores $@12 DOISPTS tipo
+
+   38 $@13: /* vazio */
+
+   39 $@14: /* vazio */
+
+   40 s_parametrosformais: $@13 listaidentificadores $@14 DOISPTS tipo
+
+   41 $@15: /* vazio */
+
+   42 $@16: /* vazio */
+
+   43 s_parametrosformais: s_parametrosformais PTOVIRG VAR $@15 listaidentificadores $@16 DOISPTS tipo
+
+   44 $@17: /* vazio */
+
+   45 $@18: /* vazio */
+
+   46 s_parametrosformais: s_parametrosformais PTOVIRG $@17 listaidentificadores $@18 DOISPTS tipo
+
+   47 comandocomposto: _BEGIN END
+
+   48 $@19: /* vazio */
+
+   49 comandocomposto: _BEGIN $@19 listacomandos END
+
+   50 listacomandos: comando
+   51              | listacomandos PTOVIRG comando
+
+   52 comando: numero DOISPTS comandosemrotulo
+   53        | comandosemrotulo
+
+   54 comandosemrotulo: atribuicao
+   55                 | chamadaprocedimento
+   56                 | desvio
+   57                 | read
+   58                 | write
+   59                 | comandocomposto
+   60                 | comandocondicional
+   61                 | comandorepetitivo
+
+   62 $@20: /* vazio */
+
+   63 atribuicao: variavel $@20 ATRIBUICAO expressao
+
+   64 chamadaprocedimento: identificador
+
+   65 $@21: /* vazio */
+
+   66 $@22: /* vazio */
+
+   67 chamadaprocedimento: identificador $@21 ABREPAR listaexpressoes $@22 FECHAPAR
+
+   68 $@23: /* vazio */
+
+   69 read: $@23 READ ABREPAR listaexpressoes FECHAPAR
+
+   70 $@24: /* vazio */
+
+   71 write: $@24 WRITE ABREPAR listaexpressoes FECHAPAR
+
+   72 desvio: GOTO numero
+
+   73 $@25: /* vazio */
+
+   74 $@26: /* vazio */
+
+   75 comandocondicional: IF $@25 expressao $@26 THEN comandosemrotulo condicaoelse
+
+   76 $@27: /* vazio */
+
+   77 condicaoelse: ELSE $@27 comandosemrotulo
+   78             | /* vazio */
+
+   79 $@28: /* vazio */
+
+   80 $@29: /* vazio */
+
+   81 comandorepetitivo: WHILE $@28 expressao $@29 DO comandosemrotulo
+
+   82 listaexpressoes: expressao
+   83                | listaexpressoes VIRGULA expressao
+
+   84 expressao: expressaosimples
+   85          | expressaosimples relacao expressaosimples
+
+   86 expressaosimples: termo
+   87                 | MAIS termo
+   88                 | MENOS termo
+   89                 | termo listaexpressoessimples
+   90                 | MAIS termo listaexpressoessimples
+   91                 | MENOS termo listaexpressoessimples
+
+   92 listaexpressoessimples: MAIS termo
+   93                       | MENOS termo
+   94                       | OR termo
+   95                       | listaexpressoessimples MAIS termo
+   96                       | listaexpressoessimples MENOS termo
+   97                       | listaexpressoessimples OR termo
+
+   98 termo: fator
+   99      | fator listatermos
+
+  100 listatermos: MULT fator
+  101            | DIV fator
+  102            | AND fator
+  103            | listatermos MULT fator
+  104            | listatermos DIV fator
+  105            | listatermos AND fator
+
+  106 fator: variavel
+  107      | numero
+  108      | chamadafuncao
+  109      | ABREPAR expressao FECHAPAR
+  110      | NOT fator
+
+  111 relacao: IGUAL
+  112        | DIF
+  113        | MENORIG
+  114        | MAIORIG
+  115        | MENOR
+  116        | MAIOR
+
+  117 variavel: identificador
+
+  118 $@30: /* vazio */
+
+  119 $@31: /* vazio */
+
+  120 chamadafuncao: identificador $@30 ABREPAR listaexpressoes $@31 FECHAPAR
+
+  121 numero: INTEIRO
+
+  122 identificador: IDENT
+
+
+Terminais, com as regras onde eles aparecem
+
+$end (0) 0
+error (256)
+INTEIRO (258) 121
+IDENT (259) 122
+LABEL (260) 9
+VAR (261) 13 37 43
+INTEGER (262) 17
+IF (263) 75
+THEN (264) 75
+ELSE (265) 77
+WHILE (266) 81
+GOTO (267) 72
+DO (268) 81
+READ (269) 69
+WRITE (270) 71
+FUNCTION (271) 30
+PROCEDURE (272) 26
+PROGRAM (273) 2
+_BEGIN (274) 47 49
+END (275) 47 49
+AND (276) 102 105
+OR (277) 94 97
+NOT (278) 110
+MAIORIG (279) 114
+MENORIG (280) 113
+MAIOR (281) 116
+MENOR (282) 115
+IGUAL (283) 111
+ATRIBUICAO (284) 63
+MAIS (285) 87 90 92 95
+MENOS (286) 88 91 93 96
+MULT (287) 100 103
+DIV (288) 101 104
+DIF (289) 112
+ABREPAR (290) 2 34 67 69 71 109 120
+FECHAPAR (291) 2 34 67 69 71 109 120
+ABRECH (292)
+FECHACH (293)
+PTOVIRG (294) 2 9 13 14 16 19 20 26 30 43 46 51
+DOISPTS (295) 15 16 30 37 40 43 46 52
+VIRGULA (296) 4 11 83
+PONTO (297) 2
+LOWER_THEN_ELSE (298)
+
+
+Não-terminais com as regras onde eles aparecem
+
+$accept (44)
+    à esquerda: 0
+programa (45)
+    à esquerda: 2, à direita: 0
+$@1 (46)
+    à esquerda: 1, à direita: 2
+listaidentificadores (47)
+    à esquerda: 3 4, à direita: 2 4 15 16 37 40 43 46
+bloco (48)
+    à esquerda: 7, à direita: 2 26 30
+$@2 (49)
+    à esquerda: 5, à direita: 7
+$@3 (50)
+    à esquerda: 6, à direita: 7
+p_declaracaorotulos (51)
+    à esquerda: 8 9, à direita: 7
+listanumeros (52)
+    à esquerda: 10 11, à direita: 9 11
+p_declaracaovariaveis (53)
+    à esquerda: 12 13 14, à direita: 7
+declaracaovariaveis (54)
+    à esquerda: 15 16, à direita: 13 14 16
+tipo (55)
+    à esquerda: 17, à direita: 15 16 30 37 40 43 46
+p_declaracaosubrotinas (56)
+    à esquerda: 18 19, à direita: 7
+listadeclaracaosubrotinas (57)
+    à esquerda: 20 21, à direita: 19 20
+declaracaosubrotinas (58)
+    à esquerda: 22 23, à direita: 20 21
+declaracaoproc (59)
+    à esquerda: 26, à direita: 22
+$@4 (60)
+    à esquerda: 24, à direita: 26
+$@5 (61)
+    à esquerda: 25, à direita: 26
+declaracaofuncao (62)
+    à esquerda: 30, à direita: 23
+$@6 (63)
+    à esquerda: 27, à direita: 30
+$@7 (64)
+    à esquerda: 28, à direita: 30
+$@8 (65)
+    à esquerda: 29, à direita: 30
+parametrosformais (66)
+    à esquerda: 31 34, à direita: 26 30
+$@9 (67)
+    à esquerda: 32, à direita: 34
+$@10 (68)
+    à esquerda: 33, à direita: 34
+s_parametrosformais (69)
+    à esquerda: 37 40 43 46, à direita: 34 43 46
+$@11 (70)
+    à esquerda: 35, à direita: 37
+$@12 (71)
+    à esquerda: 36, à direita: 37
+$@13 (72)
+    à esquerda: 38, à direita: 40
+$@14 (73)
+    à esquerda: 39, à direita: 40
+$@15 (74)
+    à esquerda: 41, à direita: 43
+$@16 (75)
+    à esquerda: 42, à direita: 43
+$@17 (76)
+    à esquerda: 44, à direita: 46
+$@18 (77)
+    à esquerda: 45, à direita: 46
+comandocomposto (78)
+    à esquerda: 47 49, à direita: 7 59
+$@19 (79)
+    à esquerda: 48, à direita: 49
+listacomandos (80)
+    à esquerda: 50 51, à direita: 49 51
+comando (81)
+    à esquerda: 52 53, à direita: 50 51
+comandosemrotulo (82)
+    à esquerda: 54 55 56 57 58 59 60 61, à direita: 52 53 75 77 81
+atribuicao (83)
+    à esquerda: 63, à direita: 54
+$@20 (84)
+    à esquerda: 62, à direita: 63
+chamadaprocedimento (85)
+    à esquerda: 64 67, à direita: 55
+$@21 (86)
+    à esquerda: 65, à direita: 67
+$@22 (87)
+    à esquerda: 66, à direita: 67
+read (88)
+    à esquerda: 69, à direita: 57
+$@23 (89)
+    à esquerda: 68, à direita: 69
+write (90)
+    à esquerda: 71, à direita: 58
+$@24 (91)
+    à esquerda: 70, à direita: 71
+desvio (92)
+    à esquerda: 72, à direita: 56
+comandocondicional (93)
+    à esquerda: 75, à direita: 60
+$@25 (94)
+    à esquerda: 73, à direita: 75
+$@26 (95)
+    à esquerda: 74, à direita: 75
+condicaoelse (96)
+    à esquerda: 77 78, à direita: 75
+$@27 (97)
+    à esquerda: 76, à direita: 77
+comandorepetitivo (98)
+    à esquerda: 81, à direita: 61
+$@28 (99)
+    à esquerda: 79, à direita: 81
+$@29 (100)
+    à esquerda: 80, à direita: 81
+listaexpressoes (101)
+    à esquerda: 82 83, à direita: 67 69 71 83 120
+expressao (102)
+    à esquerda: 84 85, à direita: 63 75 81 82 83 109
+expressaosimples (103)
+    à esquerda: 86 87 88 89 90 91, à direita: 84 85
+listaexpressoessimples (104)
+    à esquerda: 92 93 94 95 96 97, à direita: 89 90 91 95 96 97
+termo (105)
+    à esquerda: 98 99, à direita: 86 87 88 89 90 91 92 93 94 95 96
+    97
+listatermos (106)
+    à esquerda: 100 101 102 103 104 105, à direita: 99 103 104 105
+fator (107)
+    à esquerda: 106 107 108 109 110, à direita: 98 99 100 101 102
+    103 104 105 110
+relacao (108)
+    à esquerda: 111 112 113 114 115 116, à direita: 85
+variavel (109)
+    à esquerda: 117, à direita: 63 106
+chamadafuncao (110)
+    à esquerda: 120, à direita: 108
+$@30 (111)
+    à esquerda: 118, à direita: 120
+$@31 (112)
+    à esquerda: 119, à direita: 120
+numero (113)
+    à esquerda: 121, à direita: 10 11 52 72 107
+identificador (114)
+    à esquerda: 122, à direita: 2 3 4 26 30 64 67 117 120
+
+
+estado 0
+
+    0 $accept: . programa $end
+
+    PROGRAM  deslocar, e ir ao estado 1
+
+    programa  ir ao estado 2
+
+
+estado 1
+
+    2 programa: PROGRAM . identificador $@1 ABREPAR listaidentificadores FECHAPAR PTOVIRG bloco PONTO
+
+    IDENT  deslocar, e ir ao estado 3
+
+    identificador  ir ao estado 4
+
+
+estado 2
+
+    0 $accept: programa . $end
+
+    $end  deslocar, e ir ao estado 5
+
+
+estado 3
+
+  122 identificador: IDENT .
+
+    $padrão  reduzir usando a regra 122 (identificador)
+
+
+estado 4
+
+    2 programa: PROGRAM identificador . $@1 ABREPAR listaidentificadores FECHAPAR PTOVIRG bloco PONTO
+
+    $padrão  reduzir usando a regra 1 ($@1)
+
+    $@1  ir ao estado 6
+
+
+estado 5
+
+    0 $accept: programa $end .
+
+    $padrão  aceitar
+
+
+estado 6
+
+    2 programa: PROGRAM identificador $@1 . ABREPAR listaidentificadores FECHAPAR PTOVIRG bloco PONTO
+
+    ABREPAR  deslocar, e ir ao estado 7
+
+
+estado 7
+
+    2 programa: PROGRAM identificador $@1 ABREPAR . listaidentificadores FECHAPAR PTOVIRG bloco PONTO
+
+    IDENT  deslocar, e ir ao estado 3
+
+    listaidentificadores  ir ao estado 8
+    identificador         ir ao estado 9
+
+
+estado 8
+
+    2 programa: PROGRAM identificador $@1 ABREPAR listaidentificadores . FECHAPAR PTOVIRG bloco PONTO
+    4 listaidentificadores: listaidentificadores . VIRGULA identificador
+
+    FECHAPAR  deslocar, e ir ao estado 10
+    VIRGULA   deslocar, e ir ao estado 11
+
+
+estado 9
+
+    3 listaidentificadores: identificador .
+
+    $padrão  reduzir usando a regra 3 (listaidentificadores)
+
+
+estado 10
+
+    2 programa: PROGRAM identificador $@1 ABREPAR listaidentificadores FECHAPAR . PTOVIRG bloco PONTO
+
+    PTOVIRG  deslocar, e ir ao estado 12
+
+
+estado 11
+
+    4 listaidentificadores: listaidentificadores VIRGULA . identificador
+
+    IDENT  deslocar, e ir ao estado 3
+
+    identificador  ir ao estado 13
+
+
+estado 12
+
+    2 programa: PROGRAM identificador $@1 ABREPAR listaidentificadores FECHAPAR PTOVIRG . bloco PONTO
+
+    LABEL  deslocar, e ir ao estado 14
+
+    $padrão  reduzir usando a regra 8 (p_declaracaorotulos)
+
+    bloco                ir ao estado 15
+    p_declaracaorotulos  ir ao estado 16
+
+
+estado 13
+
+    4 listaidentificadores: listaidentificadores VIRGULA identificador .
+
+    $padrão  reduzir usando a regra 4 (listaidentificadores)
+
+
+estado 14
+
+    9 p_declaracaorotulos: LABEL . listanumeros PTOVIRG
+
+    INTEIRO  deslocar, e ir ao estado 17
+
+    listanumeros  ir ao estado 18
+    numero        ir ao estado 19
+
+
+estado 15
+
+    2 programa: PROGRAM identificador $@1 ABREPAR listaidentificadores FECHAPAR PTOVIRG bloco . PONTO
+
+    PONTO  deslocar, e ir ao estado 20
+
+
+estado 16
+
+    7 bloco: p_declaracaorotulos . $@2 p_declaracaovariaveis $@3 p_declaracaosubrotinas comandocomposto
+
+    $padrão  reduzir usando a regra 5 ($@2)
+
+    $@2  ir ao estado 21
+
+
+estado 17
+
+  121 numero: INTEIRO .
+
+    $padrão  reduzir usando a regra 121 (numero)
+
+
+estado 18
+
+    9 p_declaracaorotulos: LABEL listanumeros . PTOVIRG
+   11 listanumeros: listanumeros . VIRGULA numero
+
+    PTOVIRG  deslocar, e ir ao estado 22
+    VIRGULA  deslocar, e ir ao estado 23
+
+
+estado 19
+
+   10 listanumeros: numero .
+
+    $padrão  reduzir usando a regra 10 (listanumeros)
+
+
+estado 20
+
+    2 programa: PROGRAM identificador $@1 ABREPAR listaidentificadores FECHAPAR PTOVIRG bloco PONTO .
+
+    $padrão  reduzir usando a regra 2 (programa)
+
+
+estado 21
+
+    7 bloco: p_declaracaorotulos $@2 . p_declaracaovariaveis $@3 p_declaracaosubrotinas comandocomposto
+
+    IDENT  deslocar, e ir ao estado 3
+    VAR    deslocar, e ir ao estado 24
+
+    $padrão  reduzir usando a regra 12 (p_declaracaovariaveis)
+
+    listaidentificadores   ir ao estado 25
+    p_declaracaovariaveis  ir ao estado 26
+    declaracaovariaveis    ir ao estado 27
+    identificador          ir ao estado 9
+
+
+estado 22
+
+    9 p_declaracaorotulos: LABEL listanumeros PTOVIRG .
+
+    $padrão  reduzir usando a regra 9 (p_declaracaorotulos)
+
+
+estado 23
+
+   11 listanumeros: listanumeros VIRGULA . numero
+
+    INTEIRO  deslocar, e ir ao estado 17
+
+    numero  ir ao estado 28
+
+
+estado 24
+
+   13 p_declaracaovariaveis: VAR . declaracaovariaveis PTOVIRG
+
+    IDENT  deslocar, e ir ao estado 3
+
+    listaidentificadores  ir ao estado 25
+    declaracaovariaveis   ir ao estado 29
+    identificador         ir ao estado 9
+
+
+estado 25
+
+    4 listaidentificadores: listaidentificadores . VIRGULA identificador
+   15 declaracaovariaveis: listaidentificadores . DOISPTS tipo
+
+    DOISPTS  deslocar, e ir ao estado 30
+    VIRGULA  deslocar, e ir ao estado 11
+
+
+estado 26
+
+    7 bloco: p_declaracaorotulos $@2 p_declaracaovariaveis . $@3 p_declaracaosubrotinas comandocomposto
+
+    $padrão  reduzir usando a regra 6 ($@3)
+
+    $@3  ir ao estado 31
+
+
+estado 27
+
+   14 p_declaracaovariaveis: declaracaovariaveis . PTOVIRG
+   16 declaracaovariaveis: declaracaovariaveis . PTOVIRG listaidentificadores DOISPTS tipo
+
+    PTOVIRG  deslocar, e ir ao estado 32
+
+
+estado 28
+
+   11 listanumeros: listanumeros VIRGULA numero .
+
+    $padrão  reduzir usando a regra 11 (listanumeros)
+
+
+estado 29
+
+   13 p_declaracaovariaveis: VAR declaracaovariaveis . PTOVIRG
+   16 declaracaovariaveis: declaracaovariaveis . PTOVIRG listaidentificadores DOISPTS tipo
+
+    PTOVIRG  deslocar, e ir ao estado 33
+
+
+estado 30
+
+   15 declaracaovariaveis: listaidentificadores DOISPTS . tipo
+
+    INTEGER  deslocar, e ir ao estado 34
+
+    tipo  ir ao estado 35
+
+
+estado 31
+
+    7 bloco: p_declaracaorotulos $@2 p_declaracaovariaveis $@3 . p_declaracaosubrotinas comandocomposto
+
+    FUNCTION   deslocar, e ir ao estado 36
+    PROCEDURE  deslocar, e ir ao estado 37
+
+    $padrão  reduzir usando a regra 18 (p_declaracaosubrotinas)
+
+    p_declaracaosubrotinas     ir ao estado 38
+    listadeclaracaosubrotinas  ir ao estado 39
+    declaracaosubrotinas       ir ao estado 40
+    declaracaoproc             ir ao estado 41
+    declaracaofuncao           ir ao estado 42
+
+
+estado 32
+
+   14 p_declaracaovariaveis: declaracaovariaveis PTOVIRG .
+   16 declaracaovariaveis: declaracaovariaveis PTOVIRG . listaidentificadores DOISPTS tipo
+
+    IDENT  deslocar, e ir ao estado 3
+
+    $padrão  reduzir usando a regra 14 (p_declaracaovariaveis)
+
+    listaidentificadores  ir ao estado 43
+    identificador         ir ao estado 9
+
+
+estado 33
+
+   13 p_declaracaovariaveis: VAR declaracaovariaveis PTOVIRG .
+   16 declaracaovariaveis: declaracaovariaveis PTOVIRG . listaidentificadores DOISPTS tipo
+
+    IDENT  deslocar, e ir ao estado 3
+
+    $padrão  reduzir usando a regra 13 (p_declaracaovariaveis)
+
+    listaidentificadores  ir ao estado 43
+    identificador         ir ao estado 9
+
+
+estado 34
+
+   17 tipo: INTEGER .
+
+    $padrão  reduzir usando a regra 17 (tipo)
+
+
+estado 35
+
+   15 declaracaovariaveis: listaidentificadores DOISPTS tipo .
+
+    $padrão  reduzir usando a regra 15 (declaracaovariaveis)
+
+
+estado 36
+
+   30 declaracaofuncao: FUNCTION . $@6 identificador $@7 parametrosformais DOISPTS tipo $@8 PTOVIRG bloco
+
+    $padrão  reduzir usando a regra 27 ($@6)
+
+    $@6  ir ao estado 44
+
+
+estado 37
+
+   26 declaracaoproc: PROCEDURE . $@4 identificador $@5 parametrosformais PTOVIRG bloco
+
+    $padrão  reduzir usando a regra 24 ($@4)
+
+    $@4  ir ao estado 45
+
+
+estado 38
+
+    7 bloco: p_declaracaorotulos $@2 p_declaracaovariaveis $@3 p_declaracaosubrotinas . comandocomposto
+
+    _BEGIN  deslocar, e ir ao estado 46
+
+    comandocomposto  ir ao estado 47
+
+
+estado 39
+
+   19 p_declaracaosubrotinas: listadeclaracaosubrotinas . PTOVIRG
+   20 listadeclaracaosubrotinas: listadeclaracaosubrotinas . PTOVIRG declaracaosubrotinas
+
+    PTOVIRG  deslocar, e ir ao estado 48
+
+
+estado 40
+
+   21 listadeclaracaosubrotinas: declaracaosubrotinas .
+
+    $padrão  reduzir usando a regra 21 (listadeclaracaosubrotinas)
+
+
+estado 41
+
+   22 declaracaosubrotinas: declaracaoproc .
+
+    $padrão  reduzir usando a regra 22 (declaracaosubrotinas)
+
+
+estado 42
+
+   23 declaracaosubrotinas: declaracaofuncao .
+
+    $padrão  reduzir usando a regra 23 (declaracaosubrotinas)
+
+
+estado 43
+
+    4 listaidentificadores: listaidentificadores . VIRGULA identificador
+   16 declaracaovariaveis: declaracaovariaveis PTOVIRG listaidentificadores . DOISPTS tipo
+
+    DOISPTS  deslocar, e ir ao estado 49
+    VIRGULA  deslocar, e ir ao estado 11
+
+
+estado 44
+
+   30 declaracaofuncao: FUNCTION $@6 . identificador $@7 parametrosformais DOISPTS tipo $@8 PTOVIRG bloco
+
+    IDENT  deslocar, e ir ao estado 3
+
+    identificador  ir ao estado 50
+
+
+estado 45
+
+   26 declaracaoproc: PROCEDURE $@4 . identificador $@5 parametrosformais PTOVIRG bloco
+
+    IDENT  deslocar, e ir ao estado 3
+
+    identificador  ir ao estado 51
+
+
+estado 46
+
+   47 comandocomposto: _BEGIN . END
+   49                | _BEGIN . $@19 listacomandos END
+
+    END  deslocar, e ir ao estado 52
+
+    $padrão  reduzir usando a regra 48 ($@19)
+
+    $@19  ir ao estado 53
+
+
+estado 47
+
+    7 bloco: p_declaracaorotulos $@2 p_declaracaovariaveis $@3 p_declaracaosubrotinas comandocomposto .
+
+    $padrão  reduzir usando a regra 7 (bloco)
+
+
+estado 48
+
+   19 p_declaracaosubrotinas: listadeclaracaosubrotinas PTOVIRG .
+   20 listadeclaracaosubrotinas: listadeclaracaosubrotinas PTOVIRG . declaracaosubrotinas
+
+    FUNCTION   deslocar, e ir ao estado 36
+    PROCEDURE  deslocar, e ir ao estado 37
+
+    $padrão  reduzir usando a regra 19 (p_declaracaosubrotinas)
+
+    declaracaosubrotinas  ir ao estado 54
+    declaracaoproc        ir ao estado 41
+    declaracaofuncao      ir ao estado 42
+
+
+estado 49
+
+   16 declaracaovariaveis: declaracaovariaveis PTOVIRG listaidentificadores DOISPTS . tipo
+
+    INTEGER  deslocar, e ir ao estado 34
+
+    tipo  ir ao estado 55
+
+
+estado 50
+
+   30 declaracaofuncao: FUNCTION $@6 identificador . $@7 parametrosformais DOISPTS tipo $@8 PTOVIRG bloco
+
+    $padrão  reduzir usando a regra 28 ($@7)
+
+    $@7  ir ao estado 56
+
+
+estado 51
+
+   26 declaracaoproc: PROCEDURE $@4 identificador . $@5 parametrosformais PTOVIRG bloco
+
+    $padrão  reduzir usando a regra 25 ($@5)
+
+    $@5  ir ao estado 57
+
+
+estado 52
+
+   47 comandocomposto: _BEGIN END .
+
+    $padrão  reduzir usando a regra 47 (comandocomposto)
+
+
+estado 53
+
+   49 comandocomposto: _BEGIN $@19 . listacomandos END
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    IF       deslocar, e ir ao estado 58
+    WHILE    deslocar, e ir ao estado 59
+    GOTO     deslocar, e ir ao estado 60
+    _BEGIN   deslocar, e ir ao estado 46
+
+    WRITE     reduzir usando a regra 70 ($@24)
+    $padrão  reduzir usando a regra 68 ($@23)
+
+    comandocomposto      ir ao estado 61
+    listacomandos        ir ao estado 62
+    comando              ir ao estado 63
+    comandosemrotulo     ir ao estado 64
+    atribuicao           ir ao estado 65
+    chamadaprocedimento  ir ao estado 66
+    read                 ir ao estado 67
+    $@23                 ir ao estado 68
+    write                ir ao estado 69
+    $@24                 ir ao estado 70
+    desvio               ir ao estado 71
+    comandocondicional   ir ao estado 72
+    comandorepetitivo    ir ao estado 73
+    variavel             ir ao estado 74
+    numero               ir ao estado 75
+    identificador        ir ao estado 76
+
+
+estado 54
+
+   20 listadeclaracaosubrotinas: listadeclaracaosubrotinas PTOVIRG declaracaosubrotinas .
+
+    $padrão  reduzir usando a regra 20 (listadeclaracaosubrotinas)
+
+
+estado 55
+
+   16 declaracaovariaveis: declaracaovariaveis PTOVIRG listaidentificadores DOISPTS tipo .
+
+    $padrão  reduzir usando a regra 16 (declaracaovariaveis)
+
+
+estado 56
+
+   30 declaracaofuncao: FUNCTION $@6 identificador $@7 . parametrosformais DOISPTS tipo $@8 PTOVIRG bloco
+
+    ABREPAR  deslocar, e ir ao estado 77
+
+    $padrão  reduzir usando a regra 31 (parametrosformais)
+
+    parametrosformais  ir ao estado 78
+
+
+estado 57
+
+   26 declaracaoproc: PROCEDURE $@4 identificador $@5 . parametrosformais PTOVIRG bloco
+
+    ABREPAR  deslocar, e ir ao estado 77
+
+    $padrão  reduzir usando a regra 31 (parametrosformais)
+
+    parametrosformais  ir ao estado 79
+
+
+estado 58
+
+   75 comandocondicional: IF . $@25 expressao $@26 THEN comandosemrotulo condicaoelse
+
+    $padrão  reduzir usando a regra 73 ($@25)
+
+    $@25  ir ao estado 80
+
+
+estado 59
+
+   81 comandorepetitivo: WHILE . $@28 expressao $@29 DO comandosemrotulo
+
+    $padrão  reduzir usando a regra 79 ($@28)
+
+    $@28  ir ao estado 81
+
+
+estado 60
+
+   72 desvio: GOTO . numero
+
+    INTEIRO  deslocar, e ir ao estado 17
+
+    numero  ir ao estado 82
+
+
+estado 61
+
+   59 comandosemrotulo: comandocomposto .
+
+    $padrão  reduzir usando a regra 59 (comandosemrotulo)
+
+
+estado 62
+
+   49 comandocomposto: _BEGIN $@19 listacomandos . END
+   51 listacomandos: listacomandos . PTOVIRG comando
+
+    END      deslocar, e ir ao estado 83
+    PTOVIRG  deslocar, e ir ao estado 84
+
+
+estado 63
+
+   50 listacomandos: comando .
+
+    $padrão  reduzir usando a regra 50 (listacomandos)
+
+
+estado 64
+
+   53 comando: comandosemrotulo .
+
+    $padrão  reduzir usando a regra 53 (comando)
+
+
+estado 65
+
+   54 comandosemrotulo: atribuicao .
+
+    $padrão  reduzir usando a regra 54 (comandosemrotulo)
+
+
+estado 66
+
+   55 comandosemrotulo: chamadaprocedimento .
+
+    $padrão  reduzir usando a regra 55 (comandosemrotulo)
+
+
+estado 67
+
+   57 comandosemrotulo: read .
+
+    $padrão  reduzir usando a regra 57 (comandosemrotulo)
+
+
+estado 68
+
+   69 read: $@23 . READ ABREPAR listaexpressoes FECHAPAR
+
+    READ  deslocar, e ir ao estado 85
+
+
+estado 69
+
+   58 comandosemrotulo: write .
+
+    $padrão  reduzir usando a regra 58 (comandosemrotulo)
+
+
+estado 70
+
+   71 write: $@24 . WRITE ABREPAR listaexpressoes FECHAPAR
+
+    WRITE  deslocar, e ir ao estado 86
+
+
+estado 71
+
+   56 comandosemrotulo: desvio .
+
+    $padrão  reduzir usando a regra 56 (comandosemrotulo)
+
+
+estado 72
+
+   60 comandosemrotulo: comandocondicional .
+
+    $padrão  reduzir usando a regra 60 (comandosemrotulo)
+
+
+estado 73
+
+   61 comandosemrotulo: comandorepetitivo .
+
+    $padrão  reduzir usando a regra 61 (comandosemrotulo)
+
+
+estado 74
+
+   63 atribuicao: variavel . $@20 ATRIBUICAO expressao
+
+    $padrão  reduzir usando a regra 62 ($@20)
+
+    $@20  ir ao estado 87
+
+
+estado 75
+
+   52 comando: numero . DOISPTS comandosemrotulo
+
+    DOISPTS  deslocar, e ir ao estado 88
+
+
+estado 76
+
+   64 chamadaprocedimento: identificador .
+   67                    | identificador . $@21 ABREPAR listaexpressoes $@22 FECHAPAR
+  117 variavel: identificador .
+
+    ATRIBUICAO  reduzir usando a regra 117 (variavel)
+    ABREPAR     reduzir usando a regra 65 ($@21)
+    $padrão    reduzir usando a regra 64 (chamadaprocedimento)
+
+    $@21  ir ao estado 89
+
+
+estado 77
+
+   34 parametrosformais: ABREPAR . $@9 s_parametrosformais $@10 FECHAPAR
+
+    $padrão  reduzir usando a regra 32 ($@9)
+
+    $@9  ir ao estado 90
+
+
+estado 78
+
+   30 declaracaofuncao: FUNCTION $@6 identificador $@7 parametrosformais . DOISPTS tipo $@8 PTOVIRG bloco
+
+    DOISPTS  deslocar, e ir ao estado 91
+
+
+estado 79
+
+   26 declaracaoproc: PROCEDURE $@4 identificador $@5 parametrosformais . PTOVIRG bloco
+
+    PTOVIRG  deslocar, e ir ao estado 92
+
+
+estado 80
+
+   75 comandocondicional: IF $@25 . expressao $@26 THEN comandosemrotulo condicaoelse
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    MAIS     deslocar, e ir ao estado 94
+    MENOS    deslocar, e ir ao estado 95
+    ABREPAR  deslocar, e ir ao estado 96
+
+    expressao         ir ao estado 97
+    expressaosimples  ir ao estado 98
+    termo             ir ao estado 99
+    fator             ir ao estado 100
+    variavel          ir ao estado 101
+    chamadafuncao     ir ao estado 102
+    numero            ir ao estado 103
+    identificador     ir ao estado 104
+
+
+estado 81
+
+   81 comandorepetitivo: WHILE $@28 . expressao $@29 DO comandosemrotulo
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    MAIS     deslocar, e ir ao estado 94
+    MENOS    deslocar, e ir ao estado 95
+    ABREPAR  deslocar, e ir ao estado 96
+
+    expressao         ir ao estado 105
+    expressaosimples  ir ao estado 98
+    termo             ir ao estado 99
+    fator             ir ao estado 100
+    variavel          ir ao estado 101
+    chamadafuncao     ir ao estado 102
+    numero            ir ao estado 103
+    identificador     ir ao estado 104
+
+
+estado 82
+
+   72 desvio: GOTO numero .
+
+    $padrão  reduzir usando a regra 72 (desvio)
+
+
+estado 83
+
+   49 comandocomposto: _BEGIN $@19 listacomandos END .
+
+    $padrão  reduzir usando a regra 49 (comandocomposto)
+
+
+estado 84
+
+   51 listacomandos: listacomandos PTOVIRG . comando
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    IF       deslocar, e ir ao estado 58
+    WHILE    deslocar, e ir ao estado 59
+    GOTO     deslocar, e ir ao estado 60
+    _BEGIN   deslocar, e ir ao estado 46
+
+    WRITE     reduzir usando a regra 70 ($@24)
+    $padrão  reduzir usando a regra 68 ($@23)
+
+    comandocomposto      ir ao estado 61
+    comando              ir ao estado 106
+    comandosemrotulo     ir ao estado 64
+    atribuicao           ir ao estado 65
+    chamadaprocedimento  ir ao estado 66
+    read                 ir ao estado 67
+    $@23                 ir ao estado 68
+    write                ir ao estado 69
+    $@24                 ir ao estado 70
+    desvio               ir ao estado 71
+    comandocondicional   ir ao estado 72
+    comandorepetitivo    ir ao estado 73
+    variavel             ir ao estado 74
+    numero               ir ao estado 75
+    identificador        ir ao estado 76
+
+
+estado 85
+
+   69 read: $@23 READ . ABREPAR listaexpressoes FECHAPAR
+
+    ABREPAR  deslocar, e ir ao estado 107
+
+
+estado 86
+
+   71 write: $@24 WRITE . ABREPAR listaexpressoes FECHAPAR
+
+    ABREPAR  deslocar, e ir ao estado 108
+
+
+estado 87
+
+   63 atribuicao: variavel $@20 . ATRIBUICAO expressao
+
+    ATRIBUICAO  deslocar, e ir ao estado 109
+
+
+estado 88
+
+   52 comando: numero DOISPTS . comandosemrotulo
+
+    IDENT   deslocar, e ir ao estado 3
+    IF      deslocar, e ir ao estado 58
+    WHILE   deslocar, e ir ao estado 59
+    GOTO    deslocar, e ir ao estado 60
+    _BEGIN  deslocar, e ir ao estado 46
+
+    WRITE     reduzir usando a regra 70 ($@24)
+    $padrão  reduzir usando a regra 68 ($@23)
+
+    comandocomposto      ir ao estado 61
+    comandosemrotulo     ir ao estado 110
+    atribuicao           ir ao estado 65
+    chamadaprocedimento  ir ao estado 66
+    read                 ir ao estado 67
+    $@23                 ir ao estado 68
+    write                ir ao estado 69
+    $@24                 ir ao estado 70
+    desvio               ir ao estado 71
+    comandocondicional   ir ao estado 72
+    comandorepetitivo    ir ao estado 73
+    variavel             ir ao estado 74
+    identificador        ir ao estado 76
+
+
+estado 89
+
+   67 chamadaprocedimento: identificador $@21 . ABREPAR listaexpressoes $@22 FECHAPAR
+
+    ABREPAR  deslocar, e ir ao estado 111
+
+
+estado 90
+
+   34 parametrosformais: ABREPAR $@9 . s_parametrosformais $@10 FECHAPAR
+
+    VAR  deslocar, e ir ao estado 112
+
+    $padrão  reduzir usando a regra 38 ($@13)
+
+    s_parametrosformais  ir ao estado 113
+    $@13                 ir ao estado 114
+
+
+estado 91
+
+   30 declaracaofuncao: FUNCTION $@6 identificador $@7 parametrosformais DOISPTS . tipo $@8 PTOVIRG bloco
+
+    INTEGER  deslocar, e ir ao estado 34
+
+    tipo  ir ao estado 115
+
+
+estado 92
+
+   26 declaracaoproc: PROCEDURE $@4 identificador $@5 parametrosformais PTOVIRG . bloco
+
+    LABEL  deslocar, e ir ao estado 14
+
+    $padrão  reduzir usando a regra 8 (p_declaracaorotulos)
+
+    bloco                ir ao estado 116
+    p_declaracaorotulos  ir ao estado 16
+
+
+estado 93
+
+  110 fator: NOT . fator
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    fator          ir ao estado 117
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 94
+
+   87 expressaosimples: MAIS . termo
+   90                 | MAIS . termo listaexpressoessimples
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    termo          ir ao estado 118
+    fator          ir ao estado 100
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 95
+
+   88 expressaosimples: MENOS . termo
+   91                 | MENOS . termo listaexpressoessimples
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    termo          ir ao estado 119
+    fator          ir ao estado 100
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 96
+
+  109 fator: ABREPAR . expressao FECHAPAR
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    MAIS     deslocar, e ir ao estado 94
+    MENOS    deslocar, e ir ao estado 95
+    ABREPAR  deslocar, e ir ao estado 96
+
+    expressao         ir ao estado 120
+    expressaosimples  ir ao estado 98
+    termo             ir ao estado 99
+    fator             ir ao estado 100
+    variavel          ir ao estado 101
+    chamadafuncao     ir ao estado 102
+    numero            ir ao estado 103
+    identificador     ir ao estado 104
+
+
+estado 97
+
+   75 comandocondicional: IF $@25 expressao . $@26 THEN comandosemrotulo condicaoelse
+
+    $padrão  reduzir usando a regra 74 ($@26)
+
+    $@26  ir ao estado 121
+
+
+estado 98
+
+   84 expressao: expressaosimples .
+   85          | expressaosimples . relacao expressaosimples
+
+    MAIORIG  deslocar, e ir ao estado 122
+    MENORIG  deslocar, e ir ao estado 123
+    MAIOR    deslocar, e ir ao estado 124
+    MENOR    deslocar, e ir ao estado 125
+    IGUAL    deslocar, e ir ao estado 126
+    DIF      deslocar, e ir ao estado 127
+
+    $padrão  reduzir usando a regra 84 (expressao)
+
+    relacao  ir ao estado 128
+
+
+estado 99
+
+   86 expressaosimples: termo .
+   89                 | termo . listaexpressoessimples
+
+    OR     deslocar, e ir ao estado 129
+    MAIS   deslocar, e ir ao estado 130
+    MENOS  deslocar, e ir ao estado 131
+
+    $padrão  reduzir usando a regra 86 (expressaosimples)
+
+    listaexpressoessimples  ir ao estado 132
+
+
+estado 100
+
+   98 termo: fator .
+   99      | fator . listatermos
+
+    AND   deslocar, e ir ao estado 133
+    MULT  deslocar, e ir ao estado 134
+    DIV   deslocar, e ir ao estado 135
+
+    $padrão  reduzir usando a regra 98 (termo)
+
+    listatermos  ir ao estado 136
+
+
+estado 101
+
+  106 fator: variavel .
+
+    $padrão  reduzir usando a regra 106 (fator)
+
+
+estado 102
+
+  108 fator: chamadafuncao .
+
+    $padrão  reduzir usando a regra 108 (fator)
+
+
+estado 103
+
+  107 fator: numero .
+
+    $padrão  reduzir usando a regra 107 (fator)
+
+
+estado 104
+
+  117 variavel: identificador .
+  120 chamadafuncao: identificador . $@30 ABREPAR listaexpressoes $@31 FECHAPAR
+
+    ABREPAR   reduzir usando a regra 118 ($@30)
+    $padrão  reduzir usando a regra 117 (variavel)
+
+    $@30  ir ao estado 137
+
+
+estado 105
+
+   81 comandorepetitivo: WHILE $@28 expressao . $@29 DO comandosemrotulo
+
+    $padrão  reduzir usando a regra 80 ($@29)
+
+    $@29  ir ao estado 138
+
+
+estado 106
+
+   51 listacomandos: listacomandos PTOVIRG comando .
+
+    $padrão  reduzir usando a regra 51 (listacomandos)
+
+
+estado 107
+
+   69 read: $@23 READ ABREPAR . listaexpressoes FECHAPAR
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    MAIS     deslocar, e ir ao estado 94
+    MENOS    deslocar, e ir ao estado 95
+    ABREPAR  deslocar, e ir ao estado 96
+
+    listaexpressoes   ir ao estado 139
+    expressao         ir ao estado 140
+    expressaosimples  ir ao estado 98
+    termo             ir ao estado 99
+    fator             ir ao estado 100
+    variavel          ir ao estado 101
+    chamadafuncao     ir ao estado 102
+    numero            ir ao estado 103
+    identificador     ir ao estado 104
+
+
+estado 108
+
+   71 write: $@24 WRITE ABREPAR . listaexpressoes FECHAPAR
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    MAIS     deslocar, e ir ao estado 94
+    MENOS    deslocar, e ir ao estado 95
+    ABREPAR  deslocar, e ir ao estado 96
+
+    listaexpressoes   ir ao estado 141
+    expressao         ir ao estado 140
+    expressaosimples  ir ao estado 98
+    termo             ir ao estado 99
+    fator             ir ao estado 100
+    variavel          ir ao estado 101
+    chamadafuncao     ir ao estado 102
+    numero            ir ao estado 103
+    identificador     ir ao estado 104
+
+
+estado 109
+
+   63 atribuicao: variavel $@20 ATRIBUICAO . expressao
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    MAIS     deslocar, e ir ao estado 94
+    MENOS    deslocar, e ir ao estado 95
+    ABREPAR  deslocar, e ir ao estado 96
+
+    expressao         ir ao estado 142
+    expressaosimples  ir ao estado 98
+    termo             ir ao estado 99
+    fator             ir ao estado 100
+    variavel          ir ao estado 101
+    chamadafuncao     ir ao estado 102
+    numero            ir ao estado 103
+    identificador     ir ao estado 104
+
+
+estado 110
+
+   52 comando: numero DOISPTS comandosemrotulo .
+
+    $padrão  reduzir usando a regra 52 (comando)
+
+
+estado 111
+
+   67 chamadaprocedimento: identificador $@21 ABREPAR . listaexpressoes $@22 FECHAPAR
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    MAIS     deslocar, e ir ao estado 94
+    MENOS    deslocar, e ir ao estado 95
+    ABREPAR  deslocar, e ir ao estado 96
+
+    listaexpressoes   ir ao estado 143
+    expressao         ir ao estado 140
+    expressaosimples  ir ao estado 98
+    termo             ir ao estado 99
+    fator             ir ao estado 100
+    variavel          ir ao estado 101
+    chamadafuncao     ir ao estado 102
+    numero            ir ao estado 103
+    identificador     ir ao estado 104
+
+
+estado 112
+
+   37 s_parametrosformais: VAR . $@11 listaidentificadores $@12 DOISPTS tipo
+
+    $padrão  reduzir usando a regra 35 ($@11)
+
+    $@11  ir ao estado 144
+
+
+estado 113
+
+   34 parametrosformais: ABREPAR $@9 s_parametrosformais . $@10 FECHAPAR
+   43 s_parametrosformais: s_parametrosformais . PTOVIRG VAR $@15 listaidentificadores $@16 DOISPTS tipo
+   46                    | s_parametrosformais . PTOVIRG $@17 listaidentificadores $@18 DOISPTS tipo
+
+    PTOVIRG  deslocar, e ir ao estado 145
+
+    $padrão  reduzir usando a regra 33 ($@10)
+
+    $@10  ir ao estado 146
+
+
+estado 114
+
+   40 s_parametrosformais: $@13 . listaidentificadores $@14 DOISPTS tipo
+
+    IDENT  deslocar, e ir ao estado 3
+
+    listaidentificadores  ir ao estado 147
+    identificador         ir ao estado 9
+
+
+estado 115
+
+   30 declaracaofuncao: FUNCTION $@6 identificador $@7 parametrosformais DOISPTS tipo . $@8 PTOVIRG bloco
+
+    $padrão  reduzir usando a regra 29 ($@8)
+
+    $@8  ir ao estado 148
+
+
+estado 116
+
+   26 declaracaoproc: PROCEDURE $@4 identificador $@5 parametrosformais PTOVIRG bloco .
+
+    $padrão  reduzir usando a regra 26 (declaracaoproc)
+
+
+estado 117
+
+  110 fator: NOT fator .
+
+    $padrão  reduzir usando a regra 110 (fator)
+
+
+estado 118
+
+   87 expressaosimples: MAIS termo .
+   90                 | MAIS termo . listaexpressoessimples
+
+    OR     deslocar, e ir ao estado 129
+    MAIS   deslocar, e ir ao estado 130
+    MENOS  deslocar, e ir ao estado 131
+
+    $padrão  reduzir usando a regra 87 (expressaosimples)
+
+    listaexpressoessimples  ir ao estado 149
+
+
+estado 119
+
+   88 expressaosimples: MENOS termo .
+   91                 | MENOS termo . listaexpressoessimples
+
+    OR     deslocar, e ir ao estado 129
+    MAIS   deslocar, e ir ao estado 130
+    MENOS  deslocar, e ir ao estado 131
+
+    $padrão  reduzir usando a regra 88 (expressaosimples)
+
+    listaexpressoessimples  ir ao estado 150
+
+
+estado 120
+
+  109 fator: ABREPAR expressao . FECHAPAR
+
+    FECHAPAR  deslocar, e ir ao estado 151
+
+
+estado 121
+
+   75 comandocondicional: IF $@25 expressao $@26 . THEN comandosemrotulo condicaoelse
+
+    THEN  deslocar, e ir ao estado 152
+
+
+estado 122
+
+  114 relacao: MAIORIG .
+
+    $padrão  reduzir usando a regra 114 (relacao)
+
+
+estado 123
+
+  113 relacao: MENORIG .
+
+    $padrão  reduzir usando a regra 113 (relacao)
+
+
+estado 124
+
+  116 relacao: MAIOR .
+
+    $padrão  reduzir usando a regra 116 (relacao)
+
+
+estado 125
+
+  115 relacao: MENOR .
+
+    $padrão  reduzir usando a regra 115 (relacao)
+
+
+estado 126
+
+  111 relacao: IGUAL .
+
+    $padrão  reduzir usando a regra 111 (relacao)
+
+
+estado 127
+
+  112 relacao: DIF .
+
+    $padrão  reduzir usando a regra 112 (relacao)
+
+
+estado 128
+
+   85 expressao: expressaosimples relacao . expressaosimples
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    MAIS     deslocar, e ir ao estado 94
+    MENOS    deslocar, e ir ao estado 95
+    ABREPAR  deslocar, e ir ao estado 96
+
+    expressaosimples  ir ao estado 153
+    termo             ir ao estado 99
+    fator             ir ao estado 100
+    variavel          ir ao estado 101
+    chamadafuncao     ir ao estado 102
+    numero            ir ao estado 103
+    identificador     ir ao estado 104
+
+
+estado 129
+
+   94 listaexpressoessimples: OR . termo
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    termo          ir ao estado 154
+    fator          ir ao estado 100
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 130
+
+   92 listaexpressoessimples: MAIS . termo
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    termo          ir ao estado 155
+    fator          ir ao estado 100
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 131
+
+   93 listaexpressoessimples: MENOS . termo
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    termo          ir ao estado 156
+    fator          ir ao estado 100
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 132
+
+   89 expressaosimples: termo listaexpressoessimples .
+   95 listaexpressoessimples: listaexpressoessimples . MAIS termo
+   96                       | listaexpressoessimples . MENOS termo
+   97                       | listaexpressoessimples . OR termo
+
+    OR     deslocar, e ir ao estado 157
+    MAIS   deslocar, e ir ao estado 158
+    MENOS  deslocar, e ir ao estado 159
+
+    $padrão  reduzir usando a regra 89 (expressaosimples)
+
+
+estado 133
+
+  102 listatermos: AND . fator
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    fator          ir ao estado 160
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 134
+
+  100 listatermos: MULT . fator
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    fator          ir ao estado 161
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 135
+
+  101 listatermos: DIV . fator
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    fator          ir ao estado 162
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 136
+
+   99 termo: fator listatermos .
+  103 listatermos: listatermos . MULT fator
+  104            | listatermos . DIV fator
+  105            | listatermos . AND fator
+
+    AND   deslocar, e ir ao estado 163
+    MULT  deslocar, e ir ao estado 164
+    DIV   deslocar, e ir ao estado 165
+
+    $padrão  reduzir usando a regra 99 (termo)
+
+
+estado 137
+
+  120 chamadafuncao: identificador $@30 . ABREPAR listaexpressoes $@31 FECHAPAR
+
+    ABREPAR  deslocar, e ir ao estado 166
+
+
+estado 138
+
+   81 comandorepetitivo: WHILE $@28 expressao $@29 . DO comandosemrotulo
+
+    DO  deslocar, e ir ao estado 167
+
+
+estado 139
+
+   69 read: $@23 READ ABREPAR listaexpressoes . FECHAPAR
+   83 listaexpressoes: listaexpressoes . VIRGULA expressao
+
+    FECHAPAR  deslocar, e ir ao estado 168
+    VIRGULA   deslocar, e ir ao estado 169
+
+
+estado 140
+
+   82 listaexpressoes: expressao .
+
+    $padrão  reduzir usando a regra 82 (listaexpressoes)
+
+
+estado 141
+
+   71 write: $@24 WRITE ABREPAR listaexpressoes . FECHAPAR
+   83 listaexpressoes: listaexpressoes . VIRGULA expressao
+
+    FECHAPAR  deslocar, e ir ao estado 170
+    VIRGULA   deslocar, e ir ao estado 169
+
+
+estado 142
+
+   63 atribuicao: variavel $@20 ATRIBUICAO expressao .
+
+    $padrão  reduzir usando a regra 63 (atribuicao)
+
+
+estado 143
+
+   67 chamadaprocedimento: identificador $@21 ABREPAR listaexpressoes . $@22 FECHAPAR
+   83 listaexpressoes: listaexpressoes . VIRGULA expressao
+
+    VIRGULA  deslocar, e ir ao estado 169
+
+    $padrão  reduzir usando a regra 66 ($@22)
+
+    $@22  ir ao estado 171
+
+
+estado 144
+
+   37 s_parametrosformais: VAR $@11 . listaidentificadores $@12 DOISPTS tipo
+
+    IDENT  deslocar, e ir ao estado 3
+
+    listaidentificadores  ir ao estado 172
+    identificador         ir ao estado 9
+
+
+estado 145
+
+   43 s_parametrosformais: s_parametrosformais PTOVIRG . VAR $@15 listaidentificadores $@16 DOISPTS tipo
+   46                    | s_parametrosformais PTOVIRG . $@17 listaidentificadores $@18 DOISPTS tipo
+
+    VAR  deslocar, e ir ao estado 173
+
+    $padrão  reduzir usando a regra 44 ($@17)
+
+    $@17  ir ao estado 174
+
+
+estado 146
+
+   34 parametrosformais: ABREPAR $@9 s_parametrosformais $@10 . FECHAPAR
+
+    FECHAPAR  deslocar, e ir ao estado 175
+
+
+estado 147
+
+    4 listaidentificadores: listaidentificadores . VIRGULA identificador
+   40 s_parametrosformais: $@13 listaidentificadores . $@14 DOISPTS tipo
+
+    VIRGULA  deslocar, e ir ao estado 11
+
+    $padrão  reduzir usando a regra 39 ($@14)
+
+    $@14  ir ao estado 176
+
+
+estado 148
+
+   30 declaracaofuncao: FUNCTION $@6 identificador $@7 parametrosformais DOISPTS tipo $@8 . PTOVIRG bloco
+
+    PTOVIRG  deslocar, e ir ao estado 177
+
+
+estado 149
+
+   90 expressaosimples: MAIS termo listaexpressoessimples .
+   95 listaexpressoessimples: listaexpressoessimples . MAIS termo
+   96                       | listaexpressoessimples . MENOS termo
+   97                       | listaexpressoessimples . OR termo
+
+    OR     deslocar, e ir ao estado 157
+    MAIS   deslocar, e ir ao estado 158
+    MENOS  deslocar, e ir ao estado 159
+
+    $padrão  reduzir usando a regra 90 (expressaosimples)
+
+
+estado 150
+
+   91 expressaosimples: MENOS termo listaexpressoessimples .
+   95 listaexpressoessimples: listaexpressoessimples . MAIS termo
+   96                       | listaexpressoessimples . MENOS termo
+   97                       | listaexpressoessimples . OR termo
+
+    OR     deslocar, e ir ao estado 157
+    MAIS   deslocar, e ir ao estado 158
+    MENOS  deslocar, e ir ao estado 159
+
+    $padrão  reduzir usando a regra 91 (expressaosimples)
+
+
+estado 151
+
+  109 fator: ABREPAR expressao FECHAPAR .
+
+    $padrão  reduzir usando a regra 109 (fator)
+
+
+estado 152
+
+   75 comandocondicional: IF $@25 expressao $@26 THEN . comandosemrotulo condicaoelse
+
+    IDENT   deslocar, e ir ao estado 3
+    IF      deslocar, e ir ao estado 58
+    WHILE   deslocar, e ir ao estado 59
+    GOTO    deslocar, e ir ao estado 60
+    _BEGIN  deslocar, e ir ao estado 46
+
+    WRITE     reduzir usando a regra 70 ($@24)
+    $padrão  reduzir usando a regra 68 ($@23)
+
+    comandocomposto      ir ao estado 61
+    comandosemrotulo     ir ao estado 178
+    atribuicao           ir ao estado 65
+    chamadaprocedimento  ir ao estado 66
+    read                 ir ao estado 67
+    $@23                 ir ao estado 68
+    write                ir ao estado 69
+    $@24                 ir ao estado 70
+    desvio               ir ao estado 71
+    comandocondicional   ir ao estado 72
+    comandorepetitivo    ir ao estado 73
+    variavel             ir ao estado 74
+    identificador        ir ao estado 76
+
+
+estado 153
+
+   85 expressao: expressaosimples relacao expressaosimples .
+
+    $padrão  reduzir usando a regra 85 (expressao)
+
+
+estado 154
+
+   94 listaexpressoessimples: OR termo .
+
+    $padrão  reduzir usando a regra 94 (listaexpressoessimples)
+
+
+estado 155
+
+   92 listaexpressoessimples: MAIS termo .
+
+    $padrão  reduzir usando a regra 92 (listaexpressoessimples)
+
+
+estado 156
+
+   93 listaexpressoessimples: MENOS termo .
+
+    $padrão  reduzir usando a regra 93 (listaexpressoessimples)
+
+
+estado 157
+
+   97 listaexpressoessimples: listaexpressoessimples OR . termo
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    termo          ir ao estado 179
+    fator          ir ao estado 100
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 158
+
+   95 listaexpressoessimples: listaexpressoessimples MAIS . termo
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    termo          ir ao estado 180
+    fator          ir ao estado 100
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 159
+
+   96 listaexpressoessimples: listaexpressoessimples MENOS . termo
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    termo          ir ao estado 181
+    fator          ir ao estado 100
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 160
+
+  102 listatermos: AND fator .
+
+    $padrão  reduzir usando a regra 102 (listatermos)
+
+
+estado 161
+
+  100 listatermos: MULT fator .
+
+    $padrão  reduzir usando a regra 100 (listatermos)
+
+
+estado 162
+
+  101 listatermos: DIV fator .
+
+    $padrão  reduzir usando a regra 101 (listatermos)
+
+
+estado 163
+
+  105 listatermos: listatermos AND . fator
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    fator          ir ao estado 182
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 164
+
+  103 listatermos: listatermos MULT . fator
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    fator          ir ao estado 183
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 165
+
+  104 listatermos: listatermos DIV . fator
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    ABREPAR  deslocar, e ir ao estado 96
+
+    fator          ir ao estado 184
+    variavel       ir ao estado 101
+    chamadafuncao  ir ao estado 102
+    numero         ir ao estado 103
+    identificador  ir ao estado 104
+
+
+estado 166
+
+  120 chamadafuncao: identificador $@30 ABREPAR . listaexpressoes $@31 FECHAPAR
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    MAIS     deslocar, e ir ao estado 94
+    MENOS    deslocar, e ir ao estado 95
+    ABREPAR  deslocar, e ir ao estado 96
+
+    listaexpressoes   ir ao estado 185
+    expressao         ir ao estado 140
+    expressaosimples  ir ao estado 98
+    termo             ir ao estado 99
+    fator             ir ao estado 100
+    variavel          ir ao estado 101
+    chamadafuncao     ir ao estado 102
+    numero            ir ao estado 103
+    identificador     ir ao estado 104
+
+
+estado 167
+
+   81 comandorepetitivo: WHILE $@28 expressao $@29 DO . comandosemrotulo
+
+    IDENT   deslocar, e ir ao estado 3
+    IF      deslocar, e ir ao estado 58
+    WHILE   deslocar, e ir ao estado 59
+    GOTO    deslocar, e ir ao estado 60
+    _BEGIN  deslocar, e ir ao estado 46
+
+    WRITE     reduzir usando a regra 70 ($@24)
+    $padrão  reduzir usando a regra 68 ($@23)
+
+    comandocomposto      ir ao estado 61
+    comandosemrotulo     ir ao estado 186
+    atribuicao           ir ao estado 65
+    chamadaprocedimento  ir ao estado 66
+    read                 ir ao estado 67
+    $@23                 ir ao estado 68
+    write                ir ao estado 69
+    $@24                 ir ao estado 70
+    desvio               ir ao estado 71
+    comandocondicional   ir ao estado 72
+    comandorepetitivo    ir ao estado 73
+    variavel             ir ao estado 74
+    identificador        ir ao estado 76
+
+
+estado 168
+
+   69 read: $@23 READ ABREPAR listaexpressoes FECHAPAR .
+
+    $padrão  reduzir usando a regra 69 (read)
+
+
+estado 169
+
+   83 listaexpressoes: listaexpressoes VIRGULA . expressao
+
+    INTEIRO  deslocar, e ir ao estado 17
+    IDENT    deslocar, e ir ao estado 3
+    NOT      deslocar, e ir ao estado 93
+    MAIS     deslocar, e ir ao estado 94
+    MENOS    deslocar, e ir ao estado 95
+    ABREPAR  deslocar, e ir ao estado 96
+
+    expressao         ir ao estado 187
+    expressaosimples  ir ao estado 98
+    termo             ir ao estado 99
+    fator             ir ao estado 100
+    variavel          ir ao estado 101
+    chamadafuncao     ir ao estado 102
+    numero            ir ao estado 103
+    identificador     ir ao estado 104
+
+
+estado 170
+
+   71 write: $@24 WRITE ABREPAR listaexpressoes FECHAPAR .
+
+    $padrão  reduzir usando a regra 71 (write)
+
+
+estado 171
+
+   67 chamadaprocedimento: identificador $@21 ABREPAR listaexpressoes $@22 . FECHAPAR
+
+    FECHAPAR  deslocar, e ir ao estado 188
+
+
+estado 172
+
+    4 listaidentificadores: listaidentificadores . VIRGULA identificador
+   37 s_parametrosformais: VAR $@11 listaidentificadores . $@12 DOISPTS tipo
+
+    VIRGULA  deslocar, e ir ao estado 11
+
+    $padrão  reduzir usando a regra 36 ($@12)
+
+    $@12  ir ao estado 189
+
+
+estado 173
+
+   43 s_parametrosformais: s_parametrosformais PTOVIRG VAR . $@15 listaidentificadores $@16 DOISPTS tipo
+
+    $padrão  reduzir usando a regra 41 ($@15)
+
+    $@15  ir ao estado 190
+
+
+estado 174
+
+   46 s_parametrosformais: s_parametrosformais PTOVIRG $@17 . listaidentificadores $@18 DOISPTS tipo
+
+    IDENT  deslocar, e ir ao estado 3
+
+    listaidentificadores  ir ao estado 191
+    identificador         ir ao estado 9
+
+
+estado 175
+
+   34 parametrosformais: ABREPAR $@9 s_parametrosformais $@10 FECHAPAR .
+
+    $padrão  reduzir usando a regra 34 (parametrosformais)
+
+
+estado 176
+
+   40 s_parametrosformais: $@13 listaidentificadores $@14 . DOISPTS tipo
+
+    DOISPTS  deslocar, e ir ao estado 192
+
+
+estado 177
+
+   30 declaracaofuncao: FUNCTION $@6 identificador $@7 parametrosformais DOISPTS tipo $@8 PTOVIRG . bloco
+
+    LABEL  deslocar, e ir ao estado 14
+
+    $padrão  reduzir usando a regra 8 (p_declaracaorotulos)
+
+    bloco                ir ao estado 193
+    p_declaracaorotulos  ir ao estado 16
+
+
+estado 178
+
+   75 comandocondicional: IF $@25 expressao $@26 THEN comandosemrotulo . condicaoelse
+
+    ELSE  deslocar, e ir ao estado 194
+
+    $padrão  reduzir usando a regra 78 (condicaoelse)
+
+    condicaoelse  ir ao estado 195
+
+
+estado 179
+
+   97 listaexpressoessimples: listaexpressoessimples OR termo .
+
+    $padrão  reduzir usando a regra 97 (listaexpressoessimples)
+
+
+estado 180
+
+   95 listaexpressoessimples: listaexpressoessimples MAIS termo .
+
+    $padrão  reduzir usando a regra 95 (listaexpressoessimples)
+
+
+estado 181
+
+   96 listaexpressoessimples: listaexpressoessimples MENOS termo .
+
+    $padrão  reduzir usando a regra 96 (listaexpressoessimples)
+
+
+estado 182
+
+  105 listatermos: listatermos AND fator .
+
+    $padrão  reduzir usando a regra 105 (listatermos)
+
+
+estado 183
+
+  103 listatermos: listatermos MULT fator .
+
+    $padrão  reduzir usando a regra 103 (listatermos)
+
+
+estado 184
+
+  104 listatermos: listatermos DIV fator .
+
+    $padrão  reduzir usando a regra 104 (listatermos)
+
+
+estado 185
+
+   83 listaexpressoes: listaexpressoes . VIRGULA expressao
+  120 chamadafuncao: identificador $@30 ABREPAR listaexpressoes . $@31 FECHAPAR
+
+    VIRGULA  deslocar, e ir ao estado 169
+
+    $padrão  reduzir usando a regra 119 ($@31)
+
+    $@31  ir ao estado 196
+
+
+estado 186
+
+   81 comandorepetitivo: WHILE $@28 expressao $@29 DO comandosemrotulo .
+
+    $padrão  reduzir usando a regra 81 (comandorepetitivo)
+
+
+estado 187
+
+   83 listaexpressoes: listaexpressoes VIRGULA expressao .
+
+    $padrão  reduzir usando a regra 83 (listaexpressoes)
+
+
+estado 188
+
+   67 chamadaprocedimento: identificador $@21 ABREPAR listaexpressoes $@22 FECHAPAR .
+
+    $padrão  reduzir usando a regra 67 (chamadaprocedimento)
+
+
+estado 189
+
+   37 s_parametrosformais: VAR $@11 listaidentificadores $@12 . DOISPTS tipo
+
+    DOISPTS  deslocar, e ir ao estado 197
+
+
+estado 190
+
+   43 s_parametrosformais: s_parametrosformais PTOVIRG VAR $@15 . listaidentificadores $@16 DOISPTS tipo
+
+    IDENT  deslocar, e ir ao estado 3
+
+    listaidentificadores  ir ao estado 198
+    identificador         ir ao estado 9
+
+
+estado 191
+
+    4 listaidentificadores: listaidentificadores . VIRGULA identificador
+   46 s_parametrosformais: s_parametrosformais PTOVIRG $@17 listaidentificadores . $@18 DOISPTS tipo
+
+    VIRGULA  deslocar, e ir ao estado 11
+
+    $padrão  reduzir usando a regra 45 ($@18)
+
+    $@18  ir ao estado 199
+
+
+estado 192
+
+   40 s_parametrosformais: $@13 listaidentificadores $@14 DOISPTS . tipo
+
+    INTEGER  deslocar, e ir ao estado 34
+
+    tipo  ir ao estado 200
+
+
+estado 193
+
+   30 declaracaofuncao: FUNCTION $@6 identificador $@7 parametrosformais DOISPTS tipo $@8 PTOVIRG bloco .
+
+    $padrão  reduzir usando a regra 30 (declaracaofuncao)
+
+
+estado 194
+
+   77 condicaoelse: ELSE . $@27 comandosemrotulo
+
+    $padrão  reduzir usando a regra 76 ($@27)
+
+    $@27  ir ao estado 201
+
+
+estado 195
+
+   75 comandocondicional: IF $@25 expressao $@26 THEN comandosemrotulo condicaoelse .
+
+    $padrão  reduzir usando a regra 75 (comandocondicional)
+
+
+estado 196
+
+  120 chamadafuncao: identificador $@30 ABREPAR listaexpressoes $@31 . FECHAPAR
+
+    FECHAPAR  deslocar, e ir ao estado 202
+
+
+estado 197
+
+   37 s_parametrosformais: VAR $@11 listaidentificadores $@12 DOISPTS . tipo
+
+    INTEGER  deslocar, e ir ao estado 34
+
+    tipo  ir ao estado 203
+
+
+estado 198
+
+    4 listaidentificadores: listaidentificadores . VIRGULA identificador
+   43 s_parametrosformais: s_parametrosformais PTOVIRG VAR $@15 listaidentificadores . $@16 DOISPTS tipo
+
+    VIRGULA  deslocar, e ir ao estado 11
+
+    $padrão  reduzir usando a regra 42 ($@16)
+
+    $@16  ir ao estado 204
+
+
+estado 199
+
+   46 s_parametrosformais: s_parametrosformais PTOVIRG $@17 listaidentificadores $@18 . DOISPTS tipo
+
+    DOISPTS  deslocar, e ir ao estado 205
+
+
+estado 200
+
+   40 s_parametrosformais: $@13 listaidentificadores $@14 DOISPTS tipo .
+
+    $padrão  reduzir usando a regra 40 (s_parametrosformais)
+
+
+estado 201
+
+   77 condicaoelse: ELSE $@27 . comandosemrotulo
+
+    IDENT   deslocar, e ir ao estado 3
+    IF      deslocar, e ir ao estado 58
+    WHILE   deslocar, e ir ao estado 59
+    GOTO    deslocar, e ir ao estado 60
+    _BEGIN  deslocar, e ir ao estado 46
+
+    WRITE     reduzir usando a regra 70 ($@24)
+    $padrão  reduzir usando a regra 68 ($@23)
+
+    comandocomposto      ir ao estado 61
+    comandosemrotulo     ir ao estado 206
+    atribuicao           ir ao estado 65
+    chamadaprocedimento  ir ao estado 66
+    read                 ir ao estado 67
+    $@23                 ir ao estado 68
+    write                ir ao estado 69
+    $@24                 ir ao estado 70
+    desvio               ir ao estado 71
+    comandocondicional   ir ao estado 72
+    comandorepetitivo    ir ao estado 73
+    variavel             ir ao estado 74
+    identificador        ir ao estado 76
+
+
+estado 202
+
+  120 chamadafuncao: identificador $@30 ABREPAR listaexpressoes $@31 FECHAPAR .
+
+    $padrão  reduzir usando a regra 120 (chamadafuncao)
+
+
+estado 203
+
+   37 s_parametrosformais: VAR $@11 listaidentificadores $@12 DOISPTS tipo .
+
+    $padrão  reduzir usando a regra 37 (s_parametrosformais)
+
+
+estado 204
+
+   43 s_parametrosformais: s_parametrosformais PTOVIRG VAR $@15 listaidentificadores $@16 . DOISPTS tipo
+
+    DOISPTS  deslocar, e ir ao estado 207
+
+
+estado 205
+
+   46 s_parametrosformais: s_parametrosformais PTOVIRG $@17 listaidentificadores $@18 DOISPTS . tipo
+
+    INTEGER  deslocar, e ir ao estado 34
+
+    tipo  ir ao estado 208
+
+
+estado 206
+
+   77 condicaoelse: ELSE $@27 comandosemrotulo .
+
+    $padrão  reduzir usando a regra 77 (condicaoelse)
+
+
+estado 207
+
+   43 s_parametrosformais: s_parametrosformais PTOVIRG VAR $@15 listaidentificadores $@16 DOISPTS . tipo
+
+    INTEGER  deslocar, e ir ao estado 34
+
+    tipo  ir ao estado 209
+
+
+estado 208
+
+   46 s_parametrosformais: s_parametrosformais PTOVIRG $@17 listaidentificadores $@18 DOISPTS tipo .
+
+    $padrão  reduzir usando a regra 46 (s_parametrosformais)
+
+
+estado 209
+
+   43 s_parametrosformais: s_parametrosformais PTOVIRG VAR $@15 listaidentificadores $@16 DOISPTS tipo .
+
+    $padrão  reduzir usando a regra 43 (s_parametrosformais)

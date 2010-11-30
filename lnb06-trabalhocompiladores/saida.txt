@@ -1,0 +1,1820 @@
+Starting parse
+Entering state 0
+Reading a token: Next token is token PROGRAM ()
+Shifting token PROGRAM ()
+Entering state 1
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1
+Entering state 4
+Reducing stack by rule 1 (line 97):
+-> $$ = nterm $@1 ()
+Stack now 0 1 4
+Entering state 6
+Reading a token: Next token is token ABREPAR ()
+Shifting token ABREPAR ()
+Entering state 7
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7
+Entering state 9
+Reducing stack by rule 3 (line 104):
+   $1 = nterm identificador ()
+-> $$ = nterm listaidentificadores ()
+Stack now 0 1 4 6 7
+Entering state 8
+Reading a token: Next token is token VIRGULA ()
+Shifting token VIRGULA ()
+Entering state 11
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 11
+Entering state 13
+Reducing stack by rule 4 (line 105):
+   $1 = nterm listaidentificadores ()
+   $2 = token VIRGULA ()
+   $3 = nterm identificador ()
+-> $$ = nterm listaidentificadores ()
+Stack now 0 1 4 6 7
+Entering state 8
+Reading a token: Next token is token FECHAPAR ()
+Shifting token FECHAPAR ()
+Entering state 10
+Reading a token: Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 12
+Reading a token: Next token is token VAR ()
+Reducing stack by rule 8 (line 125):
+-> $$ = nterm p_declaracaorotulos ()
+Stack now 0 1 4 6 7 8 10 12
+Entering state 16
+Reducing stack by rule 5 (line 109):
+-> $$ = nterm $@2 ()
+Stack now 0 1 4 6 7 8 10 12 16
+Entering state 21
+Next token is token VAR ()
+Shifting token VAR ()
+Entering state 24
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 24
+Entering state 9
+Reducing stack by rule 3 (line 104):
+   $1 = nterm identificador ()
+-> $$ = nterm listaidentificadores ()
+Stack now 0 1 4 6 7 8 10 12 16 21 24
+Entering state 25
+Reading a token: Next token is token VIRGULA ()
+Shifting token VIRGULA ()
+Entering state 11
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 24 25 11
+Entering state 13
+Reducing stack by rule 4 (line 105):
+   $1 = nterm listaidentificadores ()
+   $2 = token VIRGULA ()
+   $3 = nterm identificador ()
+-> $$ = nterm listaidentificadores ()
+Stack now 0 1 4 6 7 8 10 12 16 21 24
+Entering state 25
+Reading a token: Next token is token DOISPTS ()
+Shifting token DOISPTS ()
+Entering state 30
+Reading a token: Next token is token INTEGER ()
+Shifting token INTEGER ()
+Entering state 34
+Reducing stack by rule 17 (line 151):
+   $1 = token INTEGER ()
+-> $$ = nterm tipo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 24 25 30
+Entering state 35
+Reducing stack by rule 15 (line 147):
+   $1 = nterm listaidentificadores ()
+   $2 = token DOISPTS ()
+   $3 = nterm tipo ()
+-> $$ = nterm declaracaovariaveis ()
+Stack now 0 1 4 6 7 8 10 12 16 21 24
+Entering state 29
+Reading a token: Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 33
+Reading a token: Next token is token PROCEDURE ()
+Reducing stack by rule 13 (line 135):
+   $1 = token VAR ()
+   $2 = nterm declaracaovariaveis ()
+   $3 = token PTOVIRG ()
+-> $$ = nterm p_declaracaovariaveis ()
+Stack now 0 1 4 6 7 8 10 12 16 21
+Entering state 26
+Reducing stack by rule 6 (line 116):
+-> $$ = nterm $@3 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26
+Entering state 31
+Next token is token PROCEDURE ()
+Shifting token PROCEDURE ()
+Entering state 37
+Reducing stack by rule 24 (line 167):
+-> $$ = nterm $@4 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37
+Entering state 45
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45
+Entering state 51
+Reducing stack by rule 25 (line 174):
+-> $$ = nterm $@5 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51
+Entering state 57
+Reading a token: Next token is token ABREPAR ()
+Shifting token ABREPAR ()
+Entering state 77
+Reducing stack by rule 32 (line 215):
+-> $$ = nterm $@9 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 77
+Entering state 90
+Reading a token: Next token is token IDENT ()
+Reducing stack by rule 38 (line 243):
+-> $$ = nterm $@13 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 77 90
+Entering state 114
+Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 77 90 114
+Entering state 9
+Reducing stack by rule 3 (line 104):
+   $1 = nterm identificador ()
+-> $$ = nterm listaidentificadores ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 77 90 114
+Entering state 147
+Reading a token: Next token is token DOISPTS ()
+Reducing stack by rule 39 (line 245):
+-> $$ = nterm $@14 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 77 90 114 147
+Entering state 176
+Next token is token DOISPTS ()
+Shifting token DOISPTS ()
+Entering state 192
+Reading a token: Next token is token INTEGER ()
+Shifting token INTEGER ()
+Entering state 34
+Reducing stack by rule 17 (line 151):
+   $1 = token INTEGER ()
+-> $$ = nterm tipo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 77 90 114 147 176 192
+Entering state 200
+Reducing stack by rule 40 (line 243):
+   $1 = nterm $@13 ()
+   $2 = nterm listaidentificadores ()
+   $3 = nterm $@14 ()
+   $4 = token DOISPTS ()
+   $5 = nterm tipo ()
+-> $$ = nterm s_parametrosformais ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 77 90
+Entering state 113
+Reading a token: Next token is token FECHAPAR ()
+Reducing stack by rule 33 (line 222):
+-> $$ = nterm $@10 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 77 90 113
+Entering state 146
+Next token is token FECHAPAR ()
+Shifting token FECHAPAR ()
+Entering state 175
+Reducing stack by rule 34 (line 214):
+   $1 = token ABREPAR ()
+   $2 = nterm $@9 ()
+   $3 = nterm s_parametrosformais ()
+   $4 = nterm $@10 ()
+   $5 = token FECHAPAR ()
+-> $$ = nterm parametrosformais ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57
+Entering state 79
+Reading a token: Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 92
+Reading a token: Next token is token VAR ()
+Reducing stack by rule 8 (line 125):
+-> $$ = nterm p_declaracaorotulos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92
+Entering state 16
+Reducing stack by rule 5 (line 109):
+-> $$ = nterm $@2 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16
+Entering state 21
+Next token is token VAR ()
+Shifting token VAR ()
+Entering state 24
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 24
+Entering state 9
+Reducing stack by rule 3 (line 104):
+   $1 = nterm identificador ()
+-> $$ = nterm listaidentificadores ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 24
+Entering state 25
+Reading a token: Next token is token DOISPTS ()
+Shifting token DOISPTS ()
+Entering state 30
+Reading a token: Next token is token INTEGER ()
+Shifting token INTEGER ()
+Entering state 34
+Reducing stack by rule 17 (line 151):
+   $1 = token INTEGER ()
+-> $$ = nterm tipo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 24 25 30
+Entering state 35
+Reducing stack by rule 15 (line 147):
+   $1 = nterm listaidentificadores ()
+   $2 = token DOISPTS ()
+   $3 = nterm tipo ()
+-> $$ = nterm declaracaovariaveis ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 24
+Entering state 29
+Reading a token: Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 33
+Reading a token: Next token is token _BEGIN ()
+Reducing stack by rule 13 (line 135):
+   $1 = token VAR ()
+   $2 = nterm declaracaovariaveis ()
+   $3 = token PTOVIRG ()
+-> $$ = nterm p_declaracaovariaveis ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21
+Entering state 26
+Reducing stack by rule 6 (line 116):
+-> $$ = nterm $@3 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26
+Entering state 31
+Next token is token _BEGIN ()
+Reducing stack by rule 18 (line 154):
+-> $$ = nterm p_declaracaosubrotinas ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31
+Entering state 38
+Next token is token _BEGIN ()
+Shifting token _BEGIN ()
+Entering state 46
+Reading a token: Next token is token IDENT ()
+Reducing stack by rule 48 (line 261):
+-> $$ = nterm $@19 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46
+Entering state 53
+Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53
+Entering state 76
+Reading a token: Next token is token ATRIBUICAO ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53
+Entering state 74
+Reducing stack by rule 62 (line 290):
+-> $$ = nterm $@20 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 74
+Entering state 87
+Next token is token ATRIBUICAO ()
+Shifting token ATRIBUICAO ()
+Entering state 109
+Reading a token: Next token is token INTEIRO ()
+Shifting token INTEIRO ()
+Entering state 17
+Reducing stack by rule 121 (line 469):
+   $1 = token INTEIRO ()
+-> $$ = nterm numero ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 74 87 109
+Entering state 103
+Reducing stack by rule 107 (line 433):
+   $1 = nterm numero ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 74 87 109
+Entering state 100
+Reading a token: Next token is token MULT ()
+Shifting token MULT ()
+Entering state 134
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 74 87 109 100 134
+Entering state 104
+Reading a token: Next token is token PTOVIRG ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 74 87 109 100 134
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 74 87 109 100 134
+Entering state 161
+Reducing stack by rule 100 (line 406):
+   $1 = token MULT ()
+   $2 = nterm fator ()
+-> $$ = nterm listatermos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 74 87 109 100
+Entering state 136
+Next token is token PTOVIRG ()
+Reducing stack by rule 99 (line 403):
+   $1 = nterm fator ()
+   $2 = nterm listatermos ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 74 87 109
+Entering state 99
+Next token is token PTOVIRG ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 74 87 109
+Entering state 98
+Next token is token PTOVIRG ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 74 87 109
+Entering state 142
+Reducing stack by rule 63 (line 289):
+   $1 = nterm variavel ()
+   $2 = nterm $@20 ()
+   $3 = token ATRIBUICAO ()
+   $4 = nterm expressao ()
+-> $$ = nterm atribuicao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53
+Entering state 65
+Reducing stack by rule 54 (line 279):
+   $1 = nterm atribuicao ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53
+Entering state 63
+Reducing stack by rule 50 (line 271):
+   $1 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53
+Entering state 62
+Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 84
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84
+Entering state 76
+Reading a token: Next token is token ATRIBUICAO ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84
+Entering state 74
+Reducing stack by rule 62 (line 290):
+-> $$ = nterm $@20 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74
+Entering state 87
+Next token is token ATRIBUICAO ()
+Shifting token ATRIBUICAO ()
+Entering state 109
+Reading a token: Next token is token INTEIRO ()
+Shifting token INTEIRO ()
+Entering state 17
+Reducing stack by rule 121 (line 469):
+   $1 = token INTEIRO ()
+-> $$ = nterm numero ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 103
+Reducing stack by rule 107 (line 433):
+   $1 = nterm numero ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 100
+Reading a token: Next token is token MULT ()
+Shifting token MULT ()
+Entering state 134
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109 100 134
+Entering state 104
+Reading a token: Next token is token PTOVIRG ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109 100 134
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109 100 134
+Entering state 161
+Reducing stack by rule 100 (line 406):
+   $1 = token MULT ()
+   $2 = nterm fator ()
+-> $$ = nterm listatermos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109 100
+Entering state 136
+Next token is token PTOVIRG ()
+Reducing stack by rule 99 (line 403):
+   $1 = nterm fator ()
+   $2 = nterm listatermos ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 99
+Next token is token PTOVIRG ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 98
+Next token is token PTOVIRG ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 142
+Reducing stack by rule 63 (line 289):
+   $1 = nterm variavel ()
+   $2 = nterm $@20 ()
+   $3 = token ATRIBUICAO ()
+   $4 = nterm expressao ()
+-> $$ = nterm atribuicao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84
+Entering state 65
+Reducing stack by rule 54 (line 279):
+   $1 = nterm atribuicao ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84
+Entering state 106
+Reducing stack by rule 51 (line 272):
+   $1 = nterm listacomandos ()
+   $2 = token PTOVIRG ()
+   $3 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53
+Entering state 62
+Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 84
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84
+Entering state 76
+Reading a token: Next token is token ATRIBUICAO ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84
+Entering state 74
+Reducing stack by rule 62 (line 290):
+-> $$ = nterm $@20 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74
+Entering state 87
+Next token is token ATRIBUICAO ()
+Shifting token ATRIBUICAO ()
+Entering state 109
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 104
+Reading a token: Next token is token MAIS ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 100
+Next token is token MAIS ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 99
+Next token is token MAIS ()
+Shifting token MAIS ()
+Entering state 130
+Reading a token: Next token is token INTEIRO ()
+Shifting token INTEIRO ()
+Entering state 17
+Reducing stack by rule 121 (line 469):
+   $1 = token INTEIRO ()
+-> $$ = nterm numero ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109 99 130
+Entering state 103
+Reducing stack by rule 107 (line 433):
+   $1 = nterm numero ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109 99 130
+Entering state 100
+Reading a token: Next token is token END ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109 99 130
+Entering state 155
+Reducing stack by rule 92 (line 394):
+   $1 = token MAIS ()
+   $2 = nterm termo ()
+-> $$ = nterm listaexpressoessimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109 99
+Entering state 132
+Next token is token END ()
+Reducing stack by rule 89 (line 389):
+   $1 = nterm termo ()
+   $2 = nterm listaexpressoessimples ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 98
+Next token is token END ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 142
+Reducing stack by rule 63 (line 289):
+   $1 = nterm variavel ()
+   $2 = nterm $@20 ()
+   $3 = token ATRIBUICAO ()
+   $4 = nterm expressao ()
+-> $$ = nterm atribuicao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84
+Entering state 65
+Reducing stack by rule 54 (line 279):
+   $1 = nterm atribuicao ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53 62 84
+Entering state 106
+Reducing stack by rule 51 (line 272):
+   $1 = nterm listacomandos ()
+   $2 = token PTOVIRG ()
+   $3 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38 46 53
+Entering state 62
+Next token is token END ()
+Shifting token END ()
+Entering state 83
+Reducing stack by rule 49 (line 260):
+   $1 = token _BEGIN ()
+   $2 = nterm $@19 ()
+   $3 = nterm listacomandos ()
+   $4 = token END ()
+-> $$ = nterm comandocomposto ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92 16 21 26 31 38
+Entering state 47
+Reducing stack by rule 7 (line 108):
+   $1 = nterm p_declaracaorotulos ()
+   $2 = nterm $@2 ()
+   $3 = nterm p_declaracaovariaveis ()
+   $4 = nterm $@3 ()
+   $5 = nterm p_declaracaosubrotinas ()
+   $6 = nterm comandocomposto ()
+-> $$ = nterm bloco ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 37 45 51 57 79 92
+Entering state 116
+Reducing stack by rule 26 (line 166):
+   $1 = token PROCEDURE ()
+   $2 = nterm $@4 ()
+   $3 = nterm identificador ()
+   $4 = nterm $@5 ()
+   $5 = nterm parametrosformais ()
+   $6 = token PTOVIRG ()
+   $7 = nterm bloco ()
+-> $$ = nterm declaracaoproc ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31
+Entering state 41
+Reducing stack by rule 22 (line 162):
+   $1 = nterm declaracaoproc ()
+-> $$ = nterm declaracaosubrotinas ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31
+Entering state 40
+Reducing stack by rule 21 (line 159):
+   $1 = nterm declaracaosubrotinas ()
+-> $$ = nterm listadeclaracaosubrotinas ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31
+Entering state 39
+Reading a token: Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 48
+Reading a token: Next token is token _BEGIN ()
+Reducing stack by rule 19 (line 155):
+   $1 = nterm listadeclaracaosubrotinas ()
+   $2 = token PTOVIRG ()
+-> $$ = nterm p_declaracaosubrotinas ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31
+Entering state 38
+Next token is token _BEGIN ()
+Shifting token _BEGIN ()
+Entering state 46
+Reading a token: Next token is token IDENT ()
+Reducing stack by rule 48 (line 261):
+-> $$ = nterm $@19 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46
+Entering state 53
+Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 76
+Reading a token: Next token is token ATRIBUICAO ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 74
+Reducing stack by rule 62 (line 290):
+-> $$ = nterm $@20 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 74
+Entering state 87
+Next token is token ATRIBUICAO ()
+Shifting token ATRIBUICAO ()
+Entering state 109
+Reading a token: Next token is token INTEIRO ()
+Shifting token INTEIRO ()
+Entering state 17
+Reducing stack by rule 121 (line 469):
+   $1 = token INTEIRO ()
+-> $$ = nterm numero ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 74 87 109
+Entering state 103
+Reducing stack by rule 107 (line 433):
+   $1 = nterm numero ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 74 87 109
+Entering state 100
+Reading a token: Next token is token PTOVIRG ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 74 87 109
+Entering state 99
+Next token is token PTOVIRG ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 74 87 109
+Entering state 98
+Next token is token PTOVIRG ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 74 87 109
+Entering state 142
+Reducing stack by rule 63 (line 289):
+   $1 = nterm variavel ()
+   $2 = nterm $@20 ()
+   $3 = token ATRIBUICAO ()
+   $4 = nterm expressao ()
+-> $$ = nterm atribuicao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 65
+Reducing stack by rule 54 (line 279):
+   $1 = nterm atribuicao ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 63
+Reducing stack by rule 50 (line 271):
+   $1 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 62
+Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 84
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 76
+Reading a token: Next token is token ATRIBUICAO ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 74
+Reducing stack by rule 62 (line 290):
+-> $$ = nterm $@20 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 74
+Entering state 87
+Next token is token ATRIBUICAO ()
+Shifting token ATRIBUICAO ()
+Entering state 109
+Reading a token: Next token is token INTEIRO ()
+Shifting token INTEIRO ()
+Entering state 17
+Reducing stack by rule 121 (line 469):
+   $1 = token INTEIRO ()
+-> $$ = nterm numero ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 103
+Reducing stack by rule 107 (line 433):
+   $1 = nterm numero ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 100
+Reading a token: Next token is token PTOVIRG ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 99
+Next token is token PTOVIRG ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 98
+Next token is token PTOVIRG ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 74 87 109
+Entering state 142
+Reducing stack by rule 63 (line 289):
+   $1 = nterm variavel ()
+   $2 = nterm $@20 ()
+   $3 = token ATRIBUICAO ()
+   $4 = nterm expressao ()
+-> $$ = nterm atribuicao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 65
+Reducing stack by rule 54 (line 279):
+   $1 = nterm atribuicao ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 106
+Reducing stack by rule 51 (line 272):
+   $1 = nterm listacomandos ()
+   $2 = token PTOVIRG ()
+   $3 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 62
+Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 84
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 76
+Reading a token: Next token is token ABREPAR ()
+Reducing stack by rule 65 (line 310):
+-> $$ = nterm $@21 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76
+Entering state 89
+Next token is token ABREPAR ()
+Shifting token ABREPAR ()
+Entering state 111
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 104
+Reading a token: Next token is token FECHAPAR ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 100
+Next token is token FECHAPAR ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 99
+Next token is token FECHAPAR ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 98
+Next token is token FECHAPAR ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 140
+Reducing stack by rule 82 (line 378):
+   $1 = nterm expressao ()
+-> $$ = nterm listaexpressoes ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 143
+Next token is token FECHAPAR ()
+Reducing stack by rule 66 (line 315):
+-> $$ = nterm $@22 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111 143
+Entering state 171
+Next token is token FECHAPAR ()
+Shifting token FECHAPAR ()
+Entering state 188
+Reducing stack by rule 67 (line 309):
+   $1 = nterm identificador ()
+   $2 = nterm $@21 ()
+   $3 = token ABREPAR ()
+   $4 = nterm listaexpressoes ()
+   $5 = nterm $@22 ()
+   $6 = token FECHAPAR ()
+-> $$ = nterm chamadaprocedimento ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 66
+Reducing stack by rule 55 (line 280):
+   $1 = nterm chamadaprocedimento ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 106
+Reducing stack by rule 51 (line 272):
+   $1 = nterm listacomandos ()
+   $2 = token PTOVIRG ()
+   $3 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 62
+Reading a token: Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 84
+Reading a token: Next token is token WRITE ()
+Reducing stack by rule 70 (line 328):
+-> $$ = nterm $@24 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 70
+Next token is token WRITE ()
+Shifting token WRITE ()
+Entering state 86
+Reading a token: Next token is token ABREPAR ()
+Shifting token ABREPAR ()
+Entering state 108
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 104
+Reading a token: Next token is token VIRGULA ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 100
+Next token is token VIRGULA ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 99
+Next token is token VIRGULA ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 98
+Next token is token VIRGULA ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 140
+Reducing stack by rule 82 (line 378):
+   $1 = nterm expressao ()
+-> $$ = nterm listaexpressoes ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 141
+Next token is token VIRGULA ()
+Shifting token VIRGULA ()
+Entering state 169
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 104
+Reading a token: Next token is token FECHAPAR ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 100
+Next token is token FECHAPAR ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 99
+Next token is token FECHAPAR ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 98
+Next token is token FECHAPAR ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 187
+Reducing stack by rule 83 (line 379):
+   $1 = nterm listaexpressoes ()
+   $2 = token VIRGULA ()
+   $3 = nterm expressao ()
+-> $$ = nterm listaexpressoes ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 141
+Next token is token FECHAPAR ()
+Shifting token FECHAPAR ()
+Entering state 170
+Reducing stack by rule 71 (line 328):
+   $1 = nterm $@24 ()
+   $2 = token WRITE ()
+   $3 = token ABREPAR ()
+   $4 = nterm listaexpressoes ()
+   $5 = token FECHAPAR ()
+-> $$ = nterm write ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 69
+Reducing stack by rule 58 (line 283):
+   $1 = nterm write ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 106
+Reducing stack by rule 51 (line 272):
+   $1 = nterm listacomandos ()
+   $2 = token PTOVIRG ()
+   $3 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 62
+Reading a token: Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 84
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 76
+Reading a token: Next token is token ABREPAR ()
+Reducing stack by rule 65 (line 310):
+-> $$ = nterm $@21 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76
+Entering state 89
+Next token is token ABREPAR ()
+Shifting token ABREPAR ()
+Entering state 111
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 104
+Reading a token: Next token is token FECHAPAR ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 100
+Next token is token FECHAPAR ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 99
+Next token is token FECHAPAR ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 98
+Next token is token FECHAPAR ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 140
+Reducing stack by rule 82 (line 378):
+   $1 = nterm expressao ()
+-> $$ = nterm listaexpressoes ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 143
+Next token is token FECHAPAR ()
+Reducing stack by rule 66 (line 315):
+-> $$ = nterm $@22 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111 143
+Entering state 171
+Next token is token FECHAPAR ()
+Shifting token FECHAPAR ()
+Entering state 188
+Reducing stack by rule 67 (line 309):
+   $1 = nterm identificador ()
+   $2 = nterm $@21 ()
+   $3 = token ABREPAR ()
+   $4 = nterm listaexpressoes ()
+   $5 = nterm $@22 ()
+   $6 = token FECHAPAR ()
+-> $$ = nterm chamadaprocedimento ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 66
+Reducing stack by rule 55 (line 280):
+   $1 = nterm chamadaprocedimento ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 106
+Reducing stack by rule 51 (line 272):
+   $1 = nterm listacomandos ()
+   $2 = token PTOVIRG ()
+   $3 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 62
+Reading a token: Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 84
+Reading a token: Next token is token WRITE ()
+Reducing stack by rule 70 (line 328):
+-> $$ = nterm $@24 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 70
+Next token is token WRITE ()
+Shifting token WRITE ()
+Entering state 86
+Reading a token: Next token is token ABREPAR ()
+Shifting token ABREPAR ()
+Entering state 108
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 104
+Reading a token: Next token is token VIRGULA ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 100
+Next token is token VIRGULA ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 99
+Next token is token VIRGULA ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 98
+Next token is token VIRGULA ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 140
+Reducing stack by rule 82 (line 378):
+   $1 = nterm expressao ()
+-> $$ = nterm listaexpressoes ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 141
+Next token is token VIRGULA ()
+Shifting token VIRGULA ()
+Entering state 169
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 104
+Reading a token: Next token is token FECHAPAR ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 100
+Next token is token FECHAPAR ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 99
+Next token is token FECHAPAR ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 98
+Next token is token FECHAPAR ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 187
+Reducing stack by rule 83 (line 379):
+   $1 = nterm listaexpressoes ()
+   $2 = token VIRGULA ()
+   $3 = nterm expressao ()
+-> $$ = nterm listaexpressoes ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 141
+Next token is token FECHAPAR ()
+Shifting token FECHAPAR ()
+Entering state 170
+Reducing stack by rule 71 (line 328):
+   $1 = nterm $@24 ()
+   $2 = token WRITE ()
+   $3 = token ABREPAR ()
+   $4 = nterm listaexpressoes ()
+   $5 = token FECHAPAR ()
+-> $$ = nterm write ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 69
+Reducing stack by rule 58 (line 283):
+   $1 = nterm write ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 106
+Reducing stack by rule 51 (line 272):
+   $1 = nterm listacomandos ()
+   $2 = token PTOVIRG ()
+   $3 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 62
+Reading a token: Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 84
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 76
+Reading a token: Next token is token ABREPAR ()
+Reducing stack by rule 65 (line 310):
+-> $$ = nterm $@21 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76
+Entering state 89
+Next token is token ABREPAR ()
+Shifting token ABREPAR ()
+Entering state 111
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 104
+Reading a token: Next token is token MAIS ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 100
+Next token is token MAIS ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 99
+Next token is token MAIS ()
+Shifting token MAIS ()
+Entering state 130
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111 99 130
+Entering state 104
+Reading a token: Next token is token FECHAPAR ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111 99 130
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111 99 130
+Entering state 100
+Next token is token FECHAPAR ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111 99 130
+Entering state 155
+Reducing stack by rule 92 (line 394):
+   $1 = token MAIS ()
+   $2 = nterm termo ()
+-> $$ = nterm listaexpressoessimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111 99
+Entering state 132
+Next token is token FECHAPAR ()
+Reducing stack by rule 89 (line 389):
+   $1 = nterm termo ()
+   $2 = nterm listaexpressoessimples ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 98
+Next token is token FECHAPAR ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 140
+Reducing stack by rule 82 (line 378):
+   $1 = nterm expressao ()
+-> $$ = nterm listaexpressoes ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 143
+Next token is token FECHAPAR ()
+Reducing stack by rule 66 (line 315):
+-> $$ = nterm $@22 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111 143
+Entering state 171
+Next token is token FECHAPAR ()
+Shifting token FECHAPAR ()
+Entering state 188
+Reducing stack by rule 67 (line 309):
+   $1 = nterm identificador ()
+   $2 = nterm $@21 ()
+   $3 = token ABREPAR ()
+   $4 = nterm listaexpressoes ()
+   $5 = nterm $@22 ()
+   $6 = token FECHAPAR ()
+-> $$ = nterm chamadaprocedimento ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 66
+Reducing stack by rule 55 (line 280):
+   $1 = nterm chamadaprocedimento ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 106
+Reducing stack by rule 51 (line 272):
+   $1 = nterm listacomandos ()
+   $2 = token PTOVIRG ()
+   $3 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 62
+Reading a token: Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 84
+Reading a token: Next token is token WRITE ()
+Reducing stack by rule 70 (line 328):
+-> $$ = nterm $@24 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 70
+Next token is token WRITE ()
+Shifting token WRITE ()
+Entering state 86
+Reading a token: Next token is token ABREPAR ()
+Shifting token ABREPAR ()
+Entering state 108
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 104
+Reading a token: Next token is token VIRGULA ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 100
+Next token is token VIRGULA ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 99
+Next token is token VIRGULA ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 98
+Next token is token VIRGULA ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 140
+Reducing stack by rule 82 (line 378):
+   $1 = nterm expressao ()
+-> $$ = nterm listaexpressoes ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 141
+Next token is token VIRGULA ()
+Shifting token VIRGULA ()
+Entering state 169
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 104
+Reading a token: Next token is token FECHAPAR ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 100
+Next token is token FECHAPAR ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 99
+Next token is token FECHAPAR ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 98
+Next token is token FECHAPAR ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 187
+Reducing stack by rule 83 (line 379):
+   $1 = nterm listaexpressoes ()
+   $2 = token VIRGULA ()
+   $3 = nterm expressao ()
+-> $$ = nterm listaexpressoes ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 141
+Next token is token FECHAPAR ()
+Shifting token FECHAPAR ()
+Entering state 170
+Reducing stack by rule 71 (line 328):
+   $1 = nterm $@24 ()
+   $2 = token WRITE ()
+   $3 = token ABREPAR ()
+   $4 = nterm listaexpressoes ()
+   $5 = token FECHAPAR ()
+-> $$ = nterm write ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 69
+Reducing stack by rule 58 (line 283):
+   $1 = nterm write ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 106
+Reducing stack by rule 51 (line 272):
+   $1 = nterm listacomandos ()
+   $2 = token PTOVIRG ()
+   $3 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 62
+Reading a token: Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 84
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 76
+Reading a token: Next token is token ABREPAR ()
+Reducing stack by rule 65 (line 310):
+-> $$ = nterm $@21 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76
+Entering state 89
+Next token is token ABREPAR ()
+Shifting token ABREPAR ()
+Entering state 111
+Reading a token: Next token is token INTEIRO ()
+Shifting token INTEIRO ()
+Entering state 17
+Reducing stack by rule 121 (line 469):
+   $1 = token INTEIRO ()
+-> $$ = nterm numero ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 103
+Reducing stack by rule 107 (line 433):
+   $1 = nterm numero ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 100
+Reading a token: Next token is token FECHAPAR ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 99
+Next token is token FECHAPAR ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 98
+Next token is token FECHAPAR ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 140
+Reducing stack by rule 82 (line 378):
+   $1 = nterm expressao ()
+-> $$ = nterm listaexpressoes ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111
+Entering state 143
+Next token is token FECHAPAR ()
+Reducing stack by rule 66 (line 315):
+-> $$ = nterm $@22 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 76 89 111 143
+Entering state 171
+Next token is token FECHAPAR ()
+Shifting token FECHAPAR ()
+Entering state 188
+Reducing stack by rule 67 (line 309):
+   $1 = nterm identificador ()
+   $2 = nterm $@21 ()
+   $3 = token ABREPAR ()
+   $4 = nterm listaexpressoes ()
+   $5 = nterm $@22 ()
+   $6 = token FECHAPAR ()
+-> $$ = nterm chamadaprocedimento ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 66
+Reducing stack by rule 55 (line 280):
+   $1 = nterm chamadaprocedimento ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 106
+Reducing stack by rule 51 (line 272):
+   $1 = nterm listacomandos ()
+   $2 = token PTOVIRG ()
+   $3 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 62
+Reading a token: Next token is token PTOVIRG ()
+Shifting token PTOVIRG ()
+Entering state 84
+Reading a token: Next token is token WRITE ()
+Reducing stack by rule 70 (line 328):
+-> $$ = nterm $@24 ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 70
+Next token is token WRITE ()
+Shifting token WRITE ()
+Entering state 86
+Reading a token: Next token is token ABREPAR ()
+Shifting token ABREPAR ()
+Entering state 108
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 104
+Reading a token: Next token is token VIRGULA ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 100
+Next token is token VIRGULA ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 99
+Next token is token VIRGULA ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 98
+Next token is token VIRGULA ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 140
+Reducing stack by rule 82 (line 378):
+   $1 = nterm expressao ()
+-> $$ = nterm listaexpressoes ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 141
+Next token is token VIRGULA ()
+Shifting token VIRGULA ()
+Entering state 169
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 3
+Reducing stack by rule 122 (line 484):
+   $1 = token IDENT ()
+-> $$ = nterm identificador ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 104
+Reading a token: Next token is token FECHAPAR ()
+Reducing stack by rule 117 (line 452):
+   $1 = nterm identificador ()
+-> $$ = nterm variavel ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 101
+Reducing stack by rule 106 (line 414):
+   $1 = nterm variavel ()
+-> $$ = nterm fator ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 100
+Next token is token FECHAPAR ()
+Reducing stack by rule 98 (line 402):
+   $1 = nterm fator ()
+-> $$ = nterm termo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 99
+Next token is token FECHAPAR ()
+Reducing stack by rule 86 (line 386):
+   $1 = nterm termo ()
+-> $$ = nterm expressaosimples ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 98
+Next token is token FECHAPAR ()
+Reducing stack by rule 84 (line 382):
+   $1 = nterm expressaosimples ()
+-> $$ = nterm expressao ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108 141 169
+Entering state 187
+Reducing stack by rule 83 (line 379):
+   $1 = nterm listaexpressoes ()
+   $2 = token VIRGULA ()
+   $3 = nterm expressao ()
+-> $$ = nterm listaexpressoes ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84 70 86 108
+Entering state 141
+Next token is token FECHAPAR ()
+Shifting token FECHAPAR ()
+Entering state 170
+Reducing stack by rule 71 (line 328):
+   $1 = nterm $@24 ()
+   $2 = token WRITE ()
+   $3 = token ABREPAR ()
+   $4 = nterm listaexpressoes ()
+   $5 = token FECHAPAR ()
+-> $$ = nterm write ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 69
+Reducing stack by rule 58 (line 283):
+   $1 = nterm write ()
+-> $$ = nterm comandosemrotulo ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 64
+Reducing stack by rule 53 (line 276):
+   $1 = nterm comandosemrotulo ()
+-> $$ = nterm comando ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53 62 84
+Entering state 106
+Reducing stack by rule 51 (line 272):
+   $1 = nterm listacomandos ()
+   $2 = token PTOVIRG ()
+   $3 = nterm comando ()
+-> $$ = nterm listacomandos ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38 46 53
+Entering state 62
+Reading a token: Next token is token END ()
+Shifting token END ()
+Entering state 83
+Reducing stack by rule 49 (line 260):
+   $1 = token _BEGIN ()
+   $2 = nterm $@19 ()
+   $3 = nterm listacomandos ()
+   $4 = token END ()
+-> $$ = nterm comandocomposto ()
+Stack now 0 1 4 6 7 8 10 12 16 21 26 31 38
+Entering state 47
+Reducing stack by rule 7 (line 108):
+   $1 = nterm p_declaracaorotulos ()
+   $2 = nterm $@2 ()
+   $3 = nterm p_declaracaovariaveis ()
+   $4 = nterm $@3 ()
+   $5 = nterm p_declaracaosubrotinas ()
+   $6 = nterm comandocomposto ()
+-> $$ = nterm bloco ()
+Stack now 0 1 4 6 7 8 10 12
+Entering state 15
+Reading a token: Next token is token PONTO ()
+Shifting token PONTO ()
+Entering state 20
+Reducing stack by rule 2 (line 96):
+   $1 = token PROGRAM ()
+   $2 = nterm identificador ()
+   $3 = nterm $@1 ()
+   $4 = token ABREPAR ()
+   $5 = nterm listaidentificadores ()
+   $6 = token FECHAPAR ()
+   $7 = token PTOVIRG ()
+   $8 = nterm bloco ()
+   $9 = token PONTO ()
+-> $$ = nterm programa ()
+Stack now 0
+Entering state 2
+Reading a token: Now at end of input.
+Shifting token $end ()
+Entering state 5
+Stack now 0 2 5
+Cleanup: popping token $end ()
+Cleanup: popping nterm programa ()
