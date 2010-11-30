@@ -27,9 +27,14 @@ short int comando_write = 0;
 short int atrib = 0;
 short int dec_params_subrotina = 0;
 short int par_referencia = 0;
+short int laco = 0;
+short int condicional = 0;
+short int n_params = 0;
 
 char relacao[10];
 char lesq[100];
+char nome_subrotina[100];
+
 int rotulo_atual = 0;
 int n_var = 0;              // Numero da variavel
 
@@ -139,13 +144,18 @@ dec_subrotinas: dec_procedimento
 
 dec_procedimento: PROCEDURE { dec_proc = 1; }
                     identificador 
-					{ dec_proc = 0; }
+					{   
+                        strcpy(nome_subrotina, matched);
+                        dec_proc = 0; 
+                        n_params = 0;
+                    }
                     params PTOVIRGULA 
                     bloco
 					{
 						fprintf(yyout, "DMEM %d\n",0);
-						fprintf(yyout, "RtPR %d,%d\n", nivel_lex, 0);
+						fprintf(yyout, "RTPR %d,%d\n", nivel_lex, buscaNumParamRotina(topoTS, nome_subrotina));
 						nivel_lex--;
+                        printSimbolos(topoTS);
 					}
 	;
 
@@ -154,6 +164,11 @@ dec_funcao: FUNCTION
 		 	identificador 
 			{ dec_func = 0; }
 			params DOISPTOS tipo PTOVIRGULA bloco
+            {
+				fprintf(yyout, "DMEM %d\n",0);
+				fprintf(yyout, "RTPR %d,%d\n", nivel_lex, 0);
+				nivel_lex--;
+            }
 	;
 
 params: 
@@ -180,8 +195,11 @@ parametros: VAR
 
 bloco_comandos: BEGIN_ END
 	| BEGIN_ 
-                { fprintf(yyout, "L%d NADA\n", desempilhaRotulo(&topoRotulo)); 
-                }
+        { 
+            if (!laco && !condicional) {
+                fprintf(yyout, "L%d: NADA\n", desempilhaRotulo(&topoRotulo)); 
+            }
+        }
                 conj_comandos END
 				;
 
@@ -208,12 +226,21 @@ atribuicao: variavel
                 strcpy(lesq, matched);
             }
             ATRIBUICAO expressao
-            {   fprintf(yyout, "ARMZ %d,%d\n", buscaNivelLexico(topoTS, lesq), buscaDesloc(topoTS, lesq));
-                atrib = 0	;
+            {  
+                if (buscaTipoParam(topoTS, lesq) == VALOR)
+                    fprintf(yyout, "ARMZ %d,%d\n", buscaNivelLexico(topoTS, lesq), buscaDesloc(topoTS, lesq));
+                else if (buscaTipoParam(topoTS, lesq) == REFERENCIA)
+                    fprintf(yyout, "ARMI %d,%d\n", buscaNivelLexico(topoTS, lesq), buscaDesloc(topoTS, lesq));
+                
+                atrib = 0;
             }
 ;
 
 ch_procedimento: identificador 
+    {
+        strcpy(nome_subrotina, matched);
+        //fprintf(yyout, "CHPR L%d,%d", buscaIdent(topoTS, nome_subrotina), nivel_lex);
+    }
 	| identificador ABREPARENTESE conj_expressoes FECHAPARENTESE 
 	;
 
@@ -233,13 +260,42 @@ desvio: GOTO numero_inteiro
 		}
 	;
 
-comando_condicional: IF expressao THEN comando_sem_rotulo cond_else
+comando_condicional: IF 
+                    { condicional = 1; }
+                    expressao 
+                    {
+                        fprintf(yyout, "DSVF L%d\n", rotulo_atual);
+                        empilhaRotulo(rotulo_atual, &topoRotulo);
+                        rotulo_atual++;
+                    }
+                    THEN comando_sem_rotulo cond_else
+                    { 
+                        fprintf(yyout, "L%d: NADA\n", desempilhaRotulo(&topoRotulo)); 
+                        condicional = 0;
+                    }
 ;
 
 cond_else:	ELSE comando_sem_rotulo
 			| %prec LOWER_THAN_ELSE	;
 
-comando_repetitivo: WHILE expressao DO comando_sem_rotulo
+comando_repetitivo: WHILE 
+                    {
+                        laco = 1;
+                        empilhaRotulo(rotulo_atual, &topoRotulo);
+                        fprintf(yyout, "L%d: NADA\n", rotulo_atual);
+                        rotulo_atual++;
+                    }
+                    expressao 
+                    {
+                        fprintf(yyout, "DSVF L%d\n", rotulo_atual);
+                    }
+                    DO comando_sem_rotulo
+                    {
+                        fprintf(yyout, "DSVS L%d\n", desempilhaRotulo(&topoRotulo));
+                        fprintf(yyout, "L%d: NADA\n", rotulo_atual);
+                        rotulo_atual++;
+                        laco = 0;
+                    }
 	;
 
 conj_expressoes: expressao
@@ -260,11 +316,17 @@ expressao_simples: termo
 	;
 
 conj_expr_simples: MAIS termo
+    { fprintf(yyout, "SOMA\n"); }
 	| MENOS termo
+    { fprintf(yyout, "SUBT\n"); }
 	| OR termo
+    { fprintf(yyout, "DISJ\n"); }
 	| conj_expr_simples MAIS termo
+    { fprintf(yyout, "SOMA\n"); }
 	| conj_expr_simples MENOS termo
+    { fprintf(yyout, "SUBT\n"); }
 	| conj_expr_simples OR termo
+    { fprintf(yyout, "DISJ\n"); }
 	;
 
 termo: fator
@@ -272,11 +334,17 @@ termo: fator
 	;
 
 conj_termos: MULT fator
+    { fprintf(yyout, "MULT\n"); }
 	| DIV fator
+    { fprintf(yyout, "DIVI\n"); }
 	| AND fator
+    { fprintf(yyout, "CONJ\n"); }
 	| conj_termos MULT fator
+    { fprintf(yyout, "MULT\n"); }
 	| conj_termos DIV fator
+    { fprintf(yyout, "DIVI\n"); }
 	| conj_termos AND fator
+    { fprintf(yyout, "CONJ\n"); }
 	;
 
 fator: variavel
@@ -295,7 +363,7 @@ fator: variavel
 	| NOT fator { fprintf(yyout, "NEGA\n"); }
 	;
 
-relacao: IGUAL           { strcpy(relacao, "CMIG\n"); }
+relacao: IGUAL      { strcpy(relacao, "CMIG\n"); }
 	| DIFF          { strcpy(relacao, "CMDG\n"); }
 	| MENOR         { strcpy(relacao, "CMME\n"); }
 	| MENORIGUAL    { strcpy(relacao, "CMEG\n"); }
@@ -349,6 +417,24 @@ identificador: IDENTIFICADOR
                         fprintf(yyout,"ENPR %d\n", nivel_lex);
                         empilhaSimbolo(&topoTS, matched, nivel_lex, -1, FUNCAO, rotulo_atual, -1);
                         rotulo_atual++;
+                    }
+                    else if (dec_params_subrotina) {
+                        printf("Declaracao de param sub: %s, isthere: %d, ref: %d\n", matched, buscaSimbolo(topoTS, nivel_lex, matched), par_referencia);
+                        if (!buscaSimbolo(topoTS, nivel_lex, matched)) {
+                            // O topo da TS tem a subrotina em questao
+                            strcpy(topoTS->parametros->nome[n_params], matched);
+                            topoTS->parametros->desloc[n_params] = n_params;
+                            if (par_referencia)
+                                topoTS->parametros->tipoPass[n_params] = REFERENCIA;
+                            else 
+                                topoTS->parametros->tipoPass[n_params] = VALOR;
+                            n_params++;
+                            printSimbolos(topoTS);
+                        }
+                        else {
+                            printf("\nVariavel jah foi declarada neste escopo\n");
+                            exit(EXIT_FAILURE);
+                        }
                     }
                 }
 	;

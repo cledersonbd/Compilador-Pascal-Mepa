@@ -29,10 +29,16 @@ int desempilhaRotulo (noRotulo *(*topo)) {
 }
 
 int printSimbolos(noTS* topo) {
+    short int i;
 
-    puts("\n--------------------------TABELA DE SIMBOLOS--------------------");
     while (topo != NULL) {
-        printf("Nome: %s\nN_lexico: %d\nDesloc.: %d\nTipo: %d\nRotulo: %d\nN_Param: %d\nProx: [%p]", topo->nome, topo->n_lexico, topo->desloc, topo->tipo, topo->rotulo, topo->n_param, topo->prox);
+        printf("Nome: %s |N_lexico: %d |Desloc.: %d |Tipo: %d |Rotulo: %d |N_Param: %d |Prox: [%p]", topo->nome, topo->n_lexico, topo->desloc, topo->tipo, topo->rotulo, topo->n_param, topo->prox);
+        if (topo->tipo == FUNCAO || topo->tipo == PROCEDIMENTO) {
+            printf("\n>>>>> ");
+            for (i=0; i < topo->n_param; i++)
+                printf("NomeParam: %s |Desloc: %d |tipoPass: %d\n", topo->parametros->nome[i], topo->parametros->desloc[i], topo->parametros->tipoPass[i]);
+        }
+
         puts("\n----------------------");
         topo= topo->prox;
     }
@@ -69,6 +75,25 @@ int buscaDesloc(noTS *topo, char *nomeSimbolo) {
     return -15;
 }
 
+int buscaTipoParam(noTS *topo, char *nomeSimbolo) {
+    while ( topo != NULL ) {
+        if ( strcmp(topo->nome, nomeSimbolo) == 0) {
+            return topo->tipo;
+        }
+        topo = topo->prox;
+    }
+    return -15;
+}
+
+char buscaNumParamRotina(noTS *topo, char *nomeRotina) {
+    while ( topo != NULL) {
+        if ( strcmp(topo->nome, nomeRotina) == 0)
+            return topo->n_param;
+        topo = topo->prox;
+    }
+    return -15;
+}
+
 int desalocaMem(noTS *topo, int n_lex) {
     int cont = 0;
 
@@ -93,6 +118,10 @@ int empilhaSimbolo(noTS **topo, char *nome, int n_lexico, int desloc, int tipo, 
     p->tipo = tipo;
     p->rotulo = rotulo;
     p->n_param = n_param;
+    if (tipo == FUNCAO || tipo == PROCEDIMENTO)
+        p->parametros = (noParam*) malloc(sizeof(noParam));
+    else
+        p->parametros = NULL;
 
     if (*topo == NULL)
         p->prox = NULL;
