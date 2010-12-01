@@ -56,8 +56,13 @@ int buscaSimbolo(noTS *topo, int nlex, char *nomeSimbolo) {
 }
 
 int buscaNivelLexico(noTS *topo, char *nomeSimbolo) {
-   
+    int i; 
     while ( topo != NULL ) {
+        if (topo->tipo == FUNCAO || topo->tipo == PROCEDIMENTO)
+            for (i=0; i < topo->n_param; i++)
+                if (strcmp(topo->parametros->nome[i], nomeSimbolo) == 0)
+                    return topo->n_lexico;
+
         if (strcmp(topo->nome, nomeSimbolo) == 0)
             return topo->n_lexico;
         topo = topo->prox;
@@ -66,8 +71,13 @@ int buscaNivelLexico(noTS *topo, char *nomeSimbolo) {
 }
  
 int buscaDesloc(noTS *topo, char *nomeSimbolo) {
-
+    int i;
     while ( topo != NULL ) {
+        if (topo->tipo == FUNCAO || topo->tipo == PROCEDIMENTO)
+            for (i=0; i < topo->n_param; i++)
+                if (strcmp(topo->parametros->nome[i], nomeSimbolo) == 0)
+                    return topo->parametros->desloc[i];
+
         if (strcmp(topo->nome, nomeSimbolo) == 0)
             return topo->desloc;
         topo = topo->prox;
@@ -76,13 +86,19 @@ int buscaDesloc(noTS *topo, char *nomeSimbolo) {
 }
 
 int buscaTipoParam(noTS *topo, char *nomeSimbolo) {
+    short int i;
+
     while ( topo != NULL ) {
-        if ( strcmp(topo->nome, nomeSimbolo) == 0) {
-            return topo->tipo;
+        if ( topo->tipo == FUNCAO || topo->tipo == PROCEDIMENTO) {
+            for (i=0; i < topo->n_param; i++) {
+                if (strcmp(topo->parametros->nome[i], nomeSimbolo) == 0) {
+                    return topo->parametros->tipoPass[i];
+                }
+            }
         }
         topo = topo->prox;
     }
-    return -15;
+    return VALOR;
 }
 
 char buscaNumParamRotina(noTS *topo, char *nomeRotina) {
@@ -94,15 +110,21 @@ char buscaNumParamRotina(noTS *topo, char *nomeRotina) {
     return -15;
 }
 
-int desalocaMem(noTS *topo, int n_lex) {
-    int cont = 0;
+int desalocaMem(noTS **topo, int n_lex) {
+    int i,cont = 0;
+    noTS *p;
 
-    while ( topo != NULL ) {
-        if (topo->n_lexico == n_lex) {
-            cont++;    
-        }
-        topo = topo->prox;
+    p = *topo;
+    while ( p != NULL ) {
+        if (p->n_lexico == n_lex)
+            if (p->tipo == VARIAVEL)
+                cont++;
+        p = p->prox;
     }
+
+    for (i=0; i < cont; i++)
+        desempilhaSimbolo(topo);
+
     return cont;
 }
 
@@ -133,7 +155,27 @@ int empilhaSimbolo(noTS **topo, char *nome, int n_lexico, int desloc, int tipo, 
     return 1;    
 }
 
+int desempilhaSimbolo(noTS **topo) {
+    noTS *p;
+
+    if (*topo == NULL)
+        return -15;
+    
+    p = *topo;
+    *topo = (*topo)->prox;
+    free(p);
+
+    return 0;
+}
 
 
 
+int buscaRotuloSubRotina(noTS *topo, char *nomeRotina, int n_lex) {
+
+    while (topo != NULL) {
+        if (strcmp(topo->nome, nomeRotina) == 0)
+            return topo->rotulo;
+        topo = topo->prox;
+    }
+}
 
